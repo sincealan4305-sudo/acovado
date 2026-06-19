@@ -721,7 +721,7 @@
 
       <div class="product-row" data-price="650" data-id="passion" style="opacity:0.6">
         <div class="product-row-info">
-          <div class="product-row-name">🥭 無毒滿天星百香果 10台斤（約6公斤）</div>
+          <div class="product-row-name">🌺 無毒滿天星百香果 10台斤（約6公斤）</div>
           <div class="product-row-price">NT$50 / 箱 · 含運 <span style="color:var(--soil);font-size:0.75rem">（產量有限）</span></div>
         </div>
         <div class="qty-control">
@@ -830,15 +830,19 @@
 </footer>
 
 <script>
-  const prices = { avo8: 650, avo10: 780, avo20: 1450, mango: 800, corn: 0 };
-  const qtys = { avo8: 0, avo10: 0, avo20: 0, mango: 0, corn: 0 };
+  const prices = { avo8: 650, avo10: 780, avo20: 1450, mango: 800, passion:650, corn: 0 };
+  const qtys = { avo8: 0, avo10: 0, avo20: 0, mango: 0, passion: 0, corn: 0 };
 
   function changeQty(id, delta) {
     qtys[id] = Math.max(0, qtys[id] + delta);
     document.getElementById('qty-' + id).textContent = qtys[id];
     const sub = qtys[id] * prices[id];
+    document.getElementById('sub-' + id).textContent = id === 'passion'
+      ? (qtys[id] > 0 ? '已售完' : '已售完')
+      : (sub > 0 ? 'NT$' + sub.toLocaleString() : 'NT$0');
+    const sub = qtys[id] * prices[id];
     document.getElementById('sub-' + id).textContent = id === 'corn'
-      ? (qtys[id] > 0 ? '預購' : '預購')
+      ? (qtys[id] > 0 ? '已售完' : '已售完')
       : (sub > 0 ? 'NT$' + sub.toLocaleString() : 'NT$0');
     updateTotal();
   }
@@ -865,7 +869,7 @@
 
     // Build order summary
     const items = [];
-    const labels = { avo8:'酪梨8台斤', avo10:'酪梨10台斤', avo20:'酪梨20台斤', mango:'愛文芒果10台斤', corn:'白玉米20台斤(預購)' };
+    const labels = { avo8:'酪梨8台斤', avo10:'酪梨10台斤', avo20:'酪梨20台斤', mango:'愛文芒果10台斤', passion:'滿天星百香果10台斤', corn:'白玉米20台斤(預購)' };
     Object.keys(qtys).forEach(k => {
       if (qtys[k] > 0) items.push(`${labels[k]} x${qtys[k]}`);
     });
