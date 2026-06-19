@@ -837,11 +837,7 @@
     qtys[id] = Math.max(0, qtys[id] + delta);
     document.getElementById('qty-' + id).textContent = qtys[id];
     const sub = qtys[id] * prices[id];
-    document.getElementById('sub-' + id).textContent = id === 'passion'
-      ? (qtys[id] > 0 ? '已售完' : '已售完')
-      : (sub > 0 ? 'NT$' + sub.toLocaleString() : 'NT$0');
-    const sub = qtys[id] * prices[id];
-    document.getElementById('sub-' + id).textContent = id === 'corn'
+    document.getElementById('sub-' + id).textContent = id === 'corn, passion'
       ? (qtys[id] > 0 ? '已售完' : '已售完')
       : (sub > 0 ? 'NT$' + sub.toLocaleString() : 'NT$0');
     updateTotal();
