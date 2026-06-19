@@ -636,52 +636,63 @@ function getScriptUrl() {
   return localStorage.getItem('scriptUrl') || '';
 }
 
-async function loadOrders() {
+function loadOrders() {
   const url = getScriptUrl();
   if (!url) {
-    // Demo data
     allOrders = getDemoOrders();
     renderOrders();
     updateStats();
-    document.getElementById('lastSync').textContent = '示範模式（尚未設定 Script URL）';
+    document.getElementById('lastSync').textContent = '尚未設定 Script URL';
     return;
   }
   document.getElementById('lastSync').textContent = '同步中…';
-  try {
-    const res = await fetch(url + '?t=' + Date.now());
-    const data = await res.json();
-    allOrders = data.map((d, i) => ({
-      id: i + 1,
-      time: d['時間'] || '',
-      name: d['姓名'] || '',
-      phone: d['電話'] || '',
-      email: d['Email'] || '',
-      address: d['地址'] || '',
-      items: d['品項'] || '',
-      total: d['金額'] || '',
-      transfer: d['匯款末碼'] || '',
-      note: d['備註'] || '',
-      status: d['狀態'] || '待確認'
-    }));
+
+  // 移除舊的 script tag
+  const old = document.getElementById('jsonpScript');
+  if (old) old.remove();
+
+  const cbName = 'jsonpCb_' + Date.now();
+  window[cbName] = function(data) {
+    delete window[cbName];
+    const s = document.getElementById('jsonpScript');
+    if (s) s.remove();
+    if (!Array.isArray(data)) {
+      document.getElementById('lastSync').textContent = '同步失敗：GAS 回傳格式錯誤';
+      return;
+    }
+    allOrders = data.map(function(d, i) {
+      return {
+        id: i + 1,
+        time: d['時間'] || '',
+        name: d['姓名'] || '',
+        phone: d['電話'] || '',
+        email: d['Email'] || '',
+        address: d['地址'] || '',
+        items: d['品項'] || '',
+        total: d['金額'] || '',
+        transfer: d['匯款末碼'] || '',
+        note: d['備註'] || '',
+        status: d['狀態'] || '待確認'
+      };
+    });
     renderOrders();
     updateStats();
     document.getElementById('lastSync').textContent = '最後同步：' + new Date().toLocaleTimeString('zh-TW');
-  } catch(e) {
-    document.getElementById('lastSync').textContent = '同步失敗，顯示示範資料';
-    allOrders = getDemoOrders();
-    renderOrders();
-    updateStats();
-  }
+  };
+
+  const script = document.createElement('script');
+  script.id = 'jsonpScript';
+  script.src = url + '?callback=' + cbName + '&t=' + Date.now();
+  script.onerror = function() {
+    delete window[cbName];
+    script.remove();
+    document.getElementById('lastSync').textContent = '同步失敗：請確認 GAS 已重新部署';
+  };
+  document.head.appendChild(script);
 }
 
 function getDemoOrders() {
-  return [
-    { id:1, time:'2025/06/15 09:30', name:'王小明', phone:'0912345678', email:'wang@example.com', address:'台北市信義區信義路五段7號', items:'酪梨8台斤 x2、酪梨10台斤 x1', total:'NT$2,080', transfer:'34521', note:'', status:'待確認' },
-    { id:2, time:'2025/06/14 15:22', name:'林雅婷', phone:'0923456789', email:'lin@example.com', address:'台中市西區台灣大道二段', items:'酪梨20台斤 x1、愛文芒果10台斤 x1', total:'NT$2,250', transfer:'78901', note:'請盡快出貨', status:'已確認' },
-    { id:3, time:'2025/06/13 11:05', name:'陳建宏', phone:'0934567890', email:'chen@example.com', address:'高雄市前鎮區中山三路', items:'酪梨8台斤 x3', total:'NT$1,950', transfer:'45678', note:'', status:'已出貨' },
-    { id:4, time:'2025/06/12 08:40', name:'張美玲', phone:'0945678901', email:'chang@example.com', address:'新北市板橋區文化路一段', items:'酪梨10台斤 x2', total:'NT$1,560', transfer:'23456', note:'', status:'完成' },
-    { id:5, time:'2025/06/10 20:15', name:'李志成', phone:'0956789012', email:'lee@example.com', address:'桃園市中壢區中山東路', items:'酪梨20台斤 x1', total:'NT$1,450', transfer:'90123', note:'希望週末前到', status:'已出貨' },
-  ];
+  return [];
 }
 
 function renderOrders() {
