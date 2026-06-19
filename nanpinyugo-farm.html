@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>南屏玉果農場 — 無毒酪梨 · 屏東直送</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #2A4A2A;
+    --forest-light: #3D6B3D;
+    --leaf: #5C8A4A;
+    --sage: #A8C5A0;
+    --sage-pale: #D4E8CF;
+    --soil: #7A5C2E;
+    --soil-light: #C4955A;
+    --cream: #FEFCF4;
+    --cream-warm: #F5F0E0;
+    --avocado-skin: #3B4A1E;
+    --text-dark: #1E2A1A;
+    --text-mid: #4A5C3A;
+    --text-light: #7A8C6A;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(254,252,244,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--sage-pale);
+    padding: 0 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.05rem; font-weight: 700;
+    color: var(--forest);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--text-mid);
+    font-size: 0.875rem; letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--forest); }
+  .nav-cta {
+    background: var(--forest); color: var(--cream) !important;
+    padding: 0.45rem 1.2rem; border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--leaf) !important; color: var(--cream) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100svh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 64px;
+  }
+  .hero-text {
+    background: var(--forest);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 5vw 6rem 8vw;
+    position: relative; overflow: hidden;
+  }
+  .hero-text::before {
+    content: '';
+    position: absolute; bottom: -60px; right: -40px;
+    width: 280px; height: 280px;
+    background: var(--forest-light);
+    border-radius: 50%;
+    opacity: 0.3;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem; letter-spacing: 0.25em;
+    color: var(--sage); text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero-h1 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 700; color: var(--cream);
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+    position: relative; z-index: 1;
+  }
+  .hero-h1 em {
+    font-style: normal;
+    color: var(--sage);
+    display: block;
+    font-size: 0.6em;
+    font-weight: 400;
+    margin-top: 0.3rem;
+    letter-spacing: 0.1em;
+  }
+  .hero-desc {
+    color: rgba(254,252,244,0.75);
+    font-size: 0.925rem;
+    max-width: 380px;
+    margin-bottom: 2.5rem;
+    position: relative; z-index: 1;
+  }
+  .hero-btn {
+    display: inline-block;
+    background: var(--soil-light); color: var(--white);
+    padding: 0.85rem 2.2rem;
+    font-size: 0.9rem; letter-spacing: 0.08em;
+    text-decoration: none; border-radius: 2px;
+    transition: background 0.2s, transform 0.2s;
+    position: relative; z-index: 1;
+    align-self: flex-start;
+  }
+  .hero-btn:hover { background: var(--soil); transform: translateY(-1px); }
+  .hero-visual {
+    background: var(--cream-warm);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    padding: 4rem 2rem;
+  }
+  .hero-avocado-wrap {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  /* SVG Avocado illustration */
+  .avocado-svg {
+    width: min(320px, 55vw);
+    filter: drop-shadow(0 20px 40px rgba(42,74,42,0.15));
+  }
+  .hero-badges {
+    position: absolute; bottom: 2.5rem; right: 2rem;
+    display: flex; flex-direction: column; gap: 0.5rem;
+  }
+  .badge {
+    background: var(--white);
+    border: 1px solid var(--sage-pale);
+    border-radius: 2px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem; color: var(--forest);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  /* ── STRIP ── */
+  .strip {
+    background: var(--avocado-skin);
+    color: var(--sage-pale);
+    padding: 0.85rem 5vw;
+    display: flex; gap: 3rem; justify-content: center;
+    font-size: 0.8rem; letter-spacing: 0.15em;
+    flex-wrap: wrap;
+  }
+  .strip span { display: flex; align-items: center; gap: 0.5rem; }
+
+  /* ── ABOUT ── */
+  .about {
+    display: grid; grid-template-columns: 55% 45%;
+    min-height: 480px;
+  }
+  .about-story {
+    background: var(--cream-warm);
+    padding: 6rem 5vw 6rem 8vw;
+  }
+  .section-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--leaf); margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 600; color: var(--forest);
+    line-height: 1.4; margin-bottom: 1.5rem;
+  }
+  .about-text {
+    color: var(--text-mid); font-size: 0.925rem;
+    max-width: 480px; line-height: 2;
+  }
+  .about-facts {
+    background: var(--forest);
+    padding: 6rem 4vw;
+    display: flex; flex-direction: column;
+    justify-content: center; gap: 2.5rem;
+  }
+  .fact-item { border-left: 2px solid var(--sage); padding-left: 1.5rem; }
+  .fact-num {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 2.2rem; font-weight: 700;
+    color: var(--sage-pale); line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .fact-label { font-size: 0.8rem; color: var(--sage); letter-spacing: 0.1em; }
+
+  /* ── PRODUCTS ── */
+  .products { padding: 6rem 8vw; background: var(--cream); }
+  .products-header { margin-bottom: 3rem; }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .product-card {
+    background: var(--white);
+    border: 1px solid var(--sage-pale);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+    cursor: default;
+  }
+  .product-card:hover {
+    box-shadow: 0 8px 32px rgba(42,74,42,0.1);
+    transform: translateY(-2px);
+  }
+  .product-icon {
+    height: 140px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 4rem;
+    position: relative; overflow: hidden;
+  }
+  .product-icon.avo { background: linear-gradient(135deg, var(--sage-pale), var(--cream-warm)); }
+  .product-icon.mango { background: linear-gradient(135deg, #FFE4A0, #FFF3CC); }
+  .product-icon.passion { background: linear-gradient(135deg, #E8D4FF, #F5EEFF); }
+  .product-icon.corn { background: linear-gradient(135deg, #FFF0AA, #FFFDE0); }
+  .product-body { padding: 1.25rem 1.5rem 1.5rem; }
+  .product-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1rem; font-weight: 600; color: var(--forest);
+    margin-bottom: 0.4rem;
+  }
+  .product-desc { font-size: 0.82rem; color: var(--text-light); margin-bottom: 1rem; line-height: 1.7; }
+  .product-prices { display: flex; flex-direction: column; gap: 0.3rem; }
+  .price-row {
+    display: flex; justify-content: space-between;
+    font-size: 0.82rem;
+    padding: 0.3rem 0; border-bottom: 1px solid var(--sage-pale);
+  }
+  .price-row:last-child { border: none; }
+  .price-label { color: var(--text-mid); }
+  .price-val { color: var(--soil); font-weight: 500; }
+  .product-note {
+    margin-top: 0.8rem;
+    font-size: 0.75rem; color: var(--text-light);
+    font-style: italic;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how {
+    background: var(--forest);
+    padding: 5rem 8vw;
+  }
+  .how .section-title { color: var(--cream); margin-bottom: 3rem; }
+  .how .section-eyebrow { color: var(--sage); }
+  .steps {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+  .step { }
+  .step-num {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 2.5rem; font-weight: 700;
+    color: var(--sage); opacity: 0.4;
+    line-height: 1; margin-bottom: 0.75rem;
+  }
+  .step-title {
+    font-size: 0.95rem; font-weight: 500;
+    color: var(--cream); margin-bottom: 0.5rem;
+  }
+  .step-desc { font-size: 0.82rem; color: var(--sage); line-height: 1.8; }
+
+  /* ── ORDER FORM ── */
+  .order-section {
+    padding: 6rem 8vw;
+    background: var(--cream-warm);
+  }
+  .order-section .section-title { margin-bottom: 0.5rem; }
+  .order-subtitle {
+    color: var(--text-light); font-size: 0.9rem;
+    margin-bottom: 3rem;
+  }
+
+  .order-form {
+    max-width: 760px;
+    background: var(--white);
+    border: 1px solid var(--sage-pale);
+    border-radius: 4px;
+    padding: 2.5rem;
+  }
+
+  .form-section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1rem; color: var(--forest);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--sage-pale);
+  }
+
+  .product-order-grid {
+    display: grid; gap: 1rem; margin-bottom: 2rem;
+  }
+  .product-row {
+    display: grid; grid-template-columns: 1fr auto auto;
+    align-items: center; gap: 1rem;
+    padding: 0.75rem;
+    background: var(--cream);
+    border-radius: 3px;
+  }
+  .product-row-info { }
+  .product-row-name { font-size: 0.88rem; font-weight: 500; color: var(--text-dark); }
+  .product-row-price { font-size: 0.78rem; color: var(--soil); }
+  .product-row-price s { color: var(--text-light); margin-right: 0.3rem; }
+  .qty-control {
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .qty-btn {
+    width: 28px; height: 28px;
+    background: var(--cream-warm); border: 1px solid var(--sage-pale);
+    border-radius: 2px; cursor: pointer;
+    font-size: 1rem; color: var(--forest);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s;
+  }
+  .qty-btn:hover { background: var(--sage-pale); }
+  .qty-display {
+    width: 32px; text-align: center;
+    font-size: 0.9rem; font-weight: 500;
+    color: var(--forest);
+  }
+  .product-subtotal {
+    font-size: 0.85rem; font-weight: 500;
+    color: var(--forest); min-width: 64px; text-align: right;
+  }
+
+  .order-total-bar {
+    background: var(--forest);
+    color: var(--cream);
+    padding: 1rem 1.25rem;
+    border-radius: 3px;
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+  }
+  .total-label { letter-spacing: 0.05em; }
+  .total-amount {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.3rem; font-weight: 700;
+  }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group.full { grid-column: 1/-1; }
+  label { font-size: 0.8rem; color: var(--text-mid); letter-spacing: 0.05em; }
+  label .required { color: var(--soil); margin-left: 0.2rem; }
+  input, select, textarea {
+    padding: 0.65rem 0.9rem;
+    border: 1px solid var(--sage-pale);
+    border-radius: 3px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 0.88rem; color: var(--text-dark);
+    background: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--leaf);
+    background: var(--white);
+  }
+  textarea { resize: vertical; min-height: 80px; }
+
+  .payment-info {
+    background: var(--cream);
+    border: 1px solid var(--sage-pale);
+    border-radius: 3px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .payment-title { font-size: 0.82rem; color: var(--text-mid); margin-bottom: 0.6rem; }
+  .payment-detail { font-size: 0.88rem; color: var(--forest); font-weight: 500; }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--forest);
+    color: var(--cream);
+    border: none; cursor: pointer;
+    padding: 1rem;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 0.95rem; letter-spacing: 0.1em;
+    border-radius: 3px;
+    transition: background 0.2s;
+  }
+  .submit-btn:hover { background: var(--leaf); }
+
+  .form-note {
+    margin-top: 1rem;
+    font-size: 0.78rem; color: var(--text-light);
+    text-align: center; line-height: 1.7;
+  }
+  .form-note a { color: var(--leaf); }
+
+  /* ── SUCCESS MESSAGE ── */
+  .success-msg {
+    display: none;
+    background: var(--forest);
+    color: var(--cream);
+    padding: 2rem;
+    border-radius: 4px;
+    text-align: center;
+  }
+  .success-msg.show { display: block; }
+  .success-msg h3 { font-family: 'Noto Serif TC', serif; font-size: 1.3rem; margin-bottom: 0.75rem; }
+  .success-msg p { font-size: 0.88rem; opacity: 0.8; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text-dark);
+    color: rgba(254,252,244,0.6);
+    padding: 3.5rem 8vw 2rem;
+  }
+  .footer-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    margin-bottom: 3rem;
+  }
+  .footer-brand-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.1rem; color: var(--cream);
+    margin-bottom: 0.75rem;
+  }
+  .footer-tagline { font-size: 0.82rem; line-height: 1.8; }
+  .footer-contact h4 { font-size: 0.8rem; letter-spacing: 0.1em; color: var(--cream); margin-bottom: 1rem; }
+  .footer-contact p { font-size: 0.82rem; margin-bottom: 0.4rem; }
+  .footer-contact a { color: var(--sage); text-decoration: none; }
+  .footer-bottom {
+    border-top: 1px solid rgba(254,252,244,0.1);
+    padding-top: 1.5rem;
+    font-size: 0.75rem; text-align: center;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-text { padding: 4rem 5vw 3rem; order: 2; }
+    .hero-visual { order: 1; min-height: 260px; }
+    .about { grid-template-columns: 1fr; }
+    .about-facts { flex-direction: row; flex-wrap: wrap; gap: 1.5rem; padding: 3rem 5vw; }
+    .form-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .product-row { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .order-form { padding: 1.5rem; }
+    .products { padding: 4rem 5vw; }
+    .order-section { padding: 4rem 5vw; }
+    .about-story { padding: 4rem 5vw; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">南屏玉果農場</a>
+  <ul class="nav-links">
+    <li><a href="#about">農場故事</a></li>
+    <li><a href="#products">農作產品</a></li>
+    <li><a href="#how">訂購流程</a></li>
+    <li><a href="#order" class="nav-cta">立即訂購</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">屏東 · 大武山腳下 · 友善耕作</p>
+    <h1 class="hero-h1">
+      每顆酪梨<br>都是一份承諾
+      <em>陽光 · 自然 · 無毒 · 自耕小農</em>
+    </h1>
+    <p class="hero-desc">
+      依傍大武山與東港溪流域，我們用友善耕作守護這片土地，
+      不灑農藥、不施化肥，只願每一顆果實都誠實回應自然的餽贈。
+    </p>
+    <a href="#order" class="hero-btn">選購農作 →</a>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-avocado-wrap">
+      <!-- SVG Avocado Illustration -->
+      <svg class="avocado-svg" viewBox="0 0 300 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Avocado body -->
+        <ellipse cx="150" cy="210" rx="110" ry="145" fill="#3B4A1E"/>
+        <!-- Avocado flesh -->
+        <ellipse cx="150" cy="215" rx="88" ry="118" fill="#A8C87A"/>
+        <!-- Avocado inner flesh -->
+        <ellipse cx="150" cy="220" rx="70" ry="98" fill="#D4E88A"/>
+        <!-- Pit -->
+        <ellipse cx="150" cy="235" rx="38" ry="42" fill="#7A5C2E"/>
+        <ellipse cx="143" cy="228" rx="12" ry="14" fill="rgba(255,255,255,0.15)"/>
+        <!-- Stem -->
+        <path d="M150 65 C148 50 155 35 162 20" stroke="#5C8A4A" stroke-width="4" stroke-linecap="round"/>
+        <ellipse cx="167" cy="16" rx="8" ry="5" fill="#5C8A4A" transform="rotate(-20 167 16)"/>
+        <!-- Leaf -->
+        <path d="M155 55 C170 30 200 25 210 45 C220 65 195 75 175 70 C155 65 145 80 155 55Z" fill="#4A7A3A"/>
+        <path d="M155 55 C175 48 200 42 210 45" stroke="#3D6B3D" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Shine -->
+        <ellipse cx="118" cy="170" rx="12" ry="20" fill="rgba(255,255,255,0.08)" transform="rotate(-20 118 170)"/>
+        <!-- Texture lines on skin -->
+        <path d="M90 260 Q95 240 100 220" stroke="#2A3A14" stroke-width="1" opacity="0.4" stroke-linecap="round"/>
+        <path d="M200 270 Q205 250 208 230" stroke="#2A3A14" stroke-width="1" opacity="0.4" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="hero-badges">
+      <div class="badge">✓ 不使用農藥</div>
+      <div class="badge">✓ 無除草劑</div>
+      <div class="badge">✓ 無化學肥料</div>
+      <div class="badge">✓ 含運費直送</div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <span>🌿 友善耕作</span>
+  <span>🏔️ 大武山腳下</span>
+  <span>💧 純淨水源灌溉</span>
+  <span>📦 宅配到府含運</span>
+  <span>🥑 品種：大顆哈斯系</span>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="about-story">
+    <p class="section-eyebrow">我們的故事</p>
+    <h2 class="section-title">土地與人<br>共生共榮</h2>
+    <p class="about-text">
+      在屏東陽光充足的土地上，依傍壯麗的大武山與潺潺流淌的東港溪、林邊溪流域，我們用心栽種每一顆無毒酪梨。
+      <br><br>
+      這片純淨的土地孕育出飽滿、細緻的酪梨。我們堅持友善耕作——不使用化學農藥、除草劑與化肥，讓每一口酪梨都能帶來最天然的風味與營養。
+      <br><br>
+      豐沛的陽光與純淨的水源，讓我們的酪梨擁有滑順的口感與濃郁的果香。無論直接品嚐、入菜，或製成酪梨牛奶，都是健康的絕佳選擇。
+      <br><br>
+      我們相信，土地與人應該共生共榮，讓每一顆果實都來自對大自然的尊重與愛護。
+    </p>
+  </div>
+  <div class="about-facts">
+    <div class="fact-item">
+      <div class="fact-num">0</div>
+      <div class="fact-label">化學農藥使用量</div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-num">0</div>
+      <div class="fact-label">除草劑與化肥</div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-num">屏東</div>
+      <div class="fact-label">大武山腳下產地直送</div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-num">小農</div>
+      <div class="fact-label">自耕自銷・親力親為</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="products">
+  <div class="products-header">
+    <p class="section-eyebrow">當季農作</p>
+    <h2 class="section-title">新鮮直送・友善種植</h2>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-icon avo">🥑</div>
+      <div class="product-body">
+        <div class="product-name">無毒酪梨</div>
+        <div class="product-desc">屏東大武山腳下，友善栽種。果肉飽滿、口感滑順，富含健康脂肪。</div>
+        <div class="product-prices">
+          <div class="price-row"><span class="price-label">8台斤（約8~10顆）</span><span class="price-val">NT$650 含運</span></div>
+          <div class="price-row"><span class="price-label">10台斤（約10~12顆）</span><span class="price-val">NT$780 含運</span></div>
+          <div class="price-row"><span class="price-label">20台斤（約20~24顆）</span><span class="price-val">NT$1,450 含運</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-icon mango">🥭</div>
+      <div class="product-body">
+        <div class="product-name">無毒愛文芒果</div>
+        <div class="product-desc">產量有限，在欉紅採收。因為沒有農藥，表皮可能有些蟲害痕跡，但口感甜美、純天然。</div>
+        <div class="product-prices">
+          <div class="price-row"><span class="price-label">10台斤（約10~15顆）</span><span class="price-val">NT$800 含運</span></div>
+        </div>
+        <div class="product-note">⚠️ 產量有限，售完為止</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-icon passion">🌺</div>
+      <div class="product-body">
+        <div class="product-name">無毒滿天星百香果</div>
+        <div class="product-desc">香氣濃郁，酸甜平衡。自然農法栽種，每一顆都是農場的驕傲。</div>
+        <div class="product-prices">
+          <div class="price-row"><span class="price-label">10台斤（約6公斤）</span><span class="price-val">NT$650 含運</span></div>
+        </div>
+        <div class="product-note">📅 本年度已售完，明年再見</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-icon corn">🌽</div>
+      <div class="product-body">
+        <div class="product-name">無毒白玉米</div>
+        <div class="product-desc">冬季限定，甜度高、口感Q彈。自然農法栽培，清甜原味。</div>
+        <div class="product-prices">
+          <div class="price-row"><span class="price-label">20台斤</span><span class="price-val">預購中</span></div>
+        </div>
+        <div class="product-note">📅 預計 1~3月採收，歡迎預訂</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="how">
+  <div>
+    <p class="section-eyebrow">訂購流程</p>
+    <h2 class="section-title">四步驟・輕鬆到府</h2>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">選擇商品與數量</div>
+      <div class="step-desc">在下方訂購表單選擇您需要的品項與箱數，系統自動計算金額。</div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">填寫收件資訊</div>
+      <div class="step-desc">填入姓名、電話、Email 與完整收件地址。</div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">匯款確認</div>
+      <div class="step-desc">依訂單金額匯款至台灣企銀(050)帳號，並填入匯款末五碼。</div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-title">LINE 通知・等候到府</div>
+      <div class="step-desc">加入官方 LINE @905zltzj 告知已匯款，我們確認後安排出貨。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER FORM -->
+<section id="order" class="order-section">
+  <p class="section-eyebrow">立即訂購</p>
+  <h2 class="section-title">選購農場直送好物</h2>
+  <p class="order-subtitle">所有商品均含運費 · 宅配到府 · 新鮮保證</p>
+
+  <div class="order-form" id="orderForm">
+    <!-- Product Selection -->
+    <div class="form-section-title">第一步：選擇農作品項</div>
+    <div class="product-order-grid" id="productGrid">
+
+      <div class="product-row" data-price="650" data-id="avo8">
+        <div class="product-row-info">
+          <div class="product-row-name">🥑 無毒酪梨 8台斤（約8~10顆）</div>
+          <div class="product-row-price">NT$650 / 箱 · 含運</div>
+        </div>
+        <div class="qty-control">
+          <button class="qty-btn" onclick="changeQty('avo8',-1)">−</button>
+          <div class="qty-display" id="qty-avo8">0</div>
+          <button class="qty-btn" onclick="changeQty('avo8',1)">+</button>
+        </div>
+        <div class="product-subtotal" id="sub-avo8">NT$0</div>
+      </div>
+
+      <div class="product-row" data-price="780" data-id="avo10">
+        <div class="product-row-info">
+          <div class="product-row-name">🥑 無毒酪梨 10台斤（約10~12顆）</div>
+          <div class="product-row-price">NT$780 / 箱 · 含運</div>
+        </div>
+        <div class="qty-control">
+          <button class="qty-btn" onclick="changeQty('avo10',-1)">−</button>
+          <div class="qty-display" id="qty-avo10">0</div>
+          <button class="qty-btn" onclick="changeQty('avo10',1)">+</button>
+        </div>
+        <div class="product-subtotal" id="sub-avo10">NT$0</div>
+      </div>
+
+      <div class="product-row" data-price="1450" data-id="avo20">
+        <div class="product-row-info">
+          <div class="product-row-name">🥑 無毒酪梨 20台斤（約20~24顆）</div>
+          <div class="product-row-price">NT$1,450 / 箱 · 含運</div>
+        </div>
+        <div class="qty-control">
+          <button class="qty-btn" onclick="changeQty('avo20',-1)">−</button>
+          <div class="qty-display" id="qty-avo20">0</div>
+          <button class="qty-btn" onclick="changeQty('avo20',1)">+</button>
+        </div>
+        <div class="product-subtotal" id="sub-avo20">NT$0</div>
+      </div>
+
+      <div class="product-row" data-price="800" data-id="mango">
+        <div class="product-row-info">
+          <div class="product-row-name">🥭 無毒愛文芒果 10台斤（約10~15顆）</div>
+          <div class="product-row-price">NT$800 / 箱 · 含運 <span style="color:var(--soil);font-size:0.75rem">（產量有限）</span></div>
+        </div>
+        <div class="qty-control">
+          <button class="qty-btn" onclick="changeQty('mango',-1)">−</button>
+          <div class="qty-display" id="qty-mango">0</div>
+          <button class="qty-btn" onclick="changeQty('mango',1)">+</button>
+        </div>
+        <div class="product-subtotal" id="sub-mango">NT$0</div>
+      </div>
+
+      <div class="product-row" data-price="0" data-id="corn" style="opacity:0.6">
+        <div class="product-row-info">
+          <div class="product-row-name">🌽 無毒白玉米 20台斤（預購）</div>
+          <div class="product-row-price" style="color:var(--text-light)">預計 1~3月採收 · 歡迎預訂</div>
+        </div>
+        <div class="qty-control">
+          <button class="qty-btn" onclick="changeQty('corn',-1)">−</button>
+          <div class="qty-display" id="qty-corn">0</div>
+          <button class="qty-btn" onclick="changeQty('corn',1)">+</button>
+        </div>
+        <div class="product-subtotal" id="sub-corn">預購</div>
+      </div>
+
+    </div>
+
+    <div class="order-total-bar">
+      <span class="total-label">訂單總金額（含運費）</span>
+      <span class="total-amount" id="totalAmount">NT$0</span>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="form-section-title">第二步：填寫收件資訊</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>訂購者姓名<span class="required">*</span></label>
+        <input type="text" id="name" placeholder="請輸入真實姓名（宅配使用）">
+      </div>
+      <div class="form-group">
+        <label>聯絡電話<span class="required">*</span></label>
+        <input type="tel" id="phone" placeholder="手機或家用電話">
+      </div>
+      <div class="form-group full">
+        <label>電子郵件<span class="required">*</span></label>
+        <input type="email" id="email" placeholder="訂購確認信將寄至此信箱">
+      </div>
+      <div class="form-group full">
+        <label>收件地址<span class="required">*</span></label>
+        <input type="text" id="address" placeholder="請填寫完整地址（含郵遞區號）">
+      </div>
+      <div class="form-group full">
+        <label>備註（選填）</label>
+        <textarea id="note" placeholder="有任何特殊需求或問題，歡迎在此說明"></textarea>
+      </div>
+    </div>
+
+    <!-- Payment -->
+    <div class="form-section-title">第三步：匯款資訊</div>
+    <div class="payment-info">
+      <div class="payment-title">請匯款至以下帳戶</div>
+      <div class="payment-detail">台灣企銀（050）帳號：85164608331</div>
+    </div>
+    <div class="form-grid">
+      <div class="form-group full">
+        <label>匯款末五碼<span class="required">*</span>（供對帳使用）</label>
+        <input type="text" id="transfer" placeholder="請填入匯款末五碼" maxlength="5">
+      </div>
+    </div>
+
+    <button class="submit-btn" onclick="submitOrder()">確認送出訂單</button>
+
+    <div class="form-note">
+      送出後請加入官方 LINE <a href="https://lin.ee/pZAcOkK">@905zltzj</a> 告知已匯款，我們將盡快確認並安排出貨。<br>
+      如有疑問請聯絡 rocanllo2022@gmail.com
+    </div>
+  </div>
+
+  <div class="success-msg" id="successMsg">
+    <h3>🌿 感謝您的訂購！</h3>
+    <p>我們已收到您的訂單，確認信將寄至您的信箱。<br>
+    請記得加入官方 LINE <strong>@905zltzj</strong> 告知已匯款，以便我們盡快安排出貨。</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name">南屏玉果農場</div>
+      <div class="footer-tagline">
+        在屏東大武山腳下，我們堅持友善耕作，<br>
+        讓每一顆果實都誠實回應這片土地的恩賜。<br><br>
+        陽光 · 自然 · 無毒 · 自耕小農
+      </div>
+    </div>
+    <div class="footer-contact">
+      <h4>聯絡我們</h4>
+      <p>官方 LINE：<a href="https://lin.ee/pZAcOkK">@905zltzj</a></p>
+      <p>Email：<a href="mailto:rocanllo2022@gmail.com">rocanllo2022@gmail.com</a></p>
+      <br>
+      <p style="font-size:0.8rem">歡迎喜愛小農耕作的民眾<br>以及餐廳業者洽詢訂購</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 南屏玉果農場 · 屏東縣 · 用心種植每一顆果實
+  </div>
+</footer>
+
+<script>
+  const prices = { avo8: 650, avo10: 780, avo20: 1450, mango: 800, corn: 0 };
+  const qtys = { avo8: 0, avo10: 0, avo20: 0, mango: 0, corn: 0 };
+
+  function changeQty(id, delta) {
+    qtys[id] = Math.max(0, qtys[id] + delta);
+    document.getElementById('qty-' + id).textContent = qtys[id];
+    const sub = qtys[id] * prices[id];
+    document.getElementById('sub-' + id).textContent = id === 'corn'
+      ? (qtys[id] > 0 ? '預購' : '預購')
+      : (sub > 0 ? 'NT$' + sub.toLocaleString() : 'NT$0');
+    updateTotal();
+  }
+
+  function updateTotal() {
+    const total = Object.keys(qtys).reduce((s, k) => s + qtys[k] * prices[k], 0);
+    document.getElementById('totalAmount').textContent = 'NT$' + total.toLocaleString();
+  }
+
+  function submitOrder() {
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const address = document.getElementById('address').value.trim();
+    const transfer = document.getElementById('transfer').value.trim();
+
+    const hasItem = Object.values(qtys).some(q => q > 0);
+    if (!hasItem) { alert('請至少選擇一項商品'); return; }
+    if (!name) { alert('請填寫訂購者姓名'); return; }
+    if (!phone) { alert('請填寫聯絡電話'); return; }
+    if (!email) { alert('請填寫電子郵件'); return; }
+    if (!address) { alert('請填寫收件地址'); return; }
+    if (!transfer) { alert('請填寫匯款末五碼'); return; }
+
+    // Build order summary
+    const items = [];
+    const labels = { avo8:'酪梨8台斤', avo10:'酪梨10台斤', avo20:'酪梨20台斤', mango:'愛文芒果10台斤', corn:'白玉米20台斤(預購)' };
+    Object.keys(qtys).forEach(k => {
+      if (qtys[k] > 0) items.push(`${labels[k]} x${qtys[k]}`);
+    });
+    const total = Object.keys(qtys).reduce((s, k) => s + qtys[k] * prices[k], 0);
+    const note = document.getElementById('note').value.trim();
+
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzCiX_UX4gXWNkNS5DCLgvf_MvW-7K3JVzvTR1iVaYpAEL0K98jEOq57HMomqREay9PyA/exec';
+
+    const payload = {
+      timestamp: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
+      name, phone, email, address,
+      items: items.join('、'),
+      total: 'NT$' + total.toLocaleString(),
+      transfer, note,
+      status: '待確認'
+    };
+
+    // 用隱藏 form 送出，繞過 CORS 限制
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = SCRIPT_URL;
+    form.target = 'hidden_iframe';
+    form.style.display = 'none';
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'data';
+    input.value = JSON.stringify(payload);
+    form.appendChild(input);
+    document.body.appendChild(form);
+
+    // 建立隱藏 iframe 接收回應，避免頁面跳轉
+    let iframe = document.getElementById('hidden_iframe');
+    if (!iframe) {
+      iframe = document.createElement('iframe');
+      iframe.name = 'hidden_iframe';
+      iframe.id = 'hidden_iframe';
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+    }
+
+    form.submit();
+    document.body.removeChild(form);
+
+    document.getElementById('orderForm').style.display = 'none';
+    document.getElementById('successMsg').classList.add('show');
+    document.getElementById('successMsg').scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
