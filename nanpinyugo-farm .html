@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>南屏玉果農場 — 無毒酪梨 · 屏東直送</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #2A4A2A; --forest-light: #3D6B3D; --leaf: #5C8A4A;
+    --sage: #A8C5A0; --sage-pale: #D4E8CF; --soil: #7A5C2E;
+    --soil-light: #C4955A; --cream: #FEFCF4; --cream-warm: #F5F0E0;
+    --avocado-skin: #3B4A1E; --text-dark: #1E2A1A; --text-mid: #4A5C3A;
+    --text-light: #7A8C6A; --white: #FFFFFF;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Noto Sans TC',sans-serif; background:var(--cream); color:var(--text-dark); font-weight:300; line-height:1.8; }
+
+  /* NAV */
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(254,252,244,0.95); backdrop-filter:blur(8px); border-bottom:1px solid var(--sage-pale); padding:0 5vw; display:flex; align-items:center; justify-content:space-between; height:64px; }
+  .nav-logo { font-family:'Noto Serif TC',serif; font-size:1.05rem; font-weight:700; color:var(--forest); text-decoration:none; letter-spacing:0.08em; }
+  .nav-links { display:flex; gap:1.5rem; list-style:none; align-items:center; }
+  .nav-links a { text-decoration:none; color:var(--text-mid); font-size:0.875rem; letter-spacing:0.05em; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--forest); }
+  .nav-cta { background:var(--forest)!important; color:var(--cream)!important; padding:0.45rem 1.2rem; border-radius:2px; }
+  .nav-cta:hover { background:var(--leaf)!important; }
+  .nav-dropdown { position:relative; }
+  .nav-dropdown-menu { display:none; position:absolute; top:calc(100% + 8px); left:0; background:var(--white); border:1px solid var(--sage-pale); border-radius:3px; min-width:140px; box-shadow:0 4px 16px rgba(42,74,42,0.1); padding:0.4rem 0; }
+  .nav-dropdown:hover .nav-dropdown-menu { display:block; }
+  .nav-dropdown-menu a { display:block; padding:0.5rem 1rem; font-size:0.82rem; color:var(--text-mid); text-decoration:none; white-space:nowrap; }
+  .nav-dropdown-menu a:hover { color:var(--forest); background:var(--cream); }
+
+  /* HERO */
+  .hero { min-height:100svh; display:grid; grid-template-columns:1fr 1fr; padding-top:64px; }
+  .hero-text { background:var(--forest); display:flex; flex-direction:column; justify-content:center; padding:6rem 5vw 6rem 8vw; position:relative; overflow:hidden; }
+  .hero-text::before { content:''; position:absolute; bottom:-60px; right:-40px; width:280px; height:280px; background:var(--forest-light); border-radius:50%; opacity:0.3; }
+  .hero-eyebrow { font-size:0.75rem; letter-spacing:0.25em; color:var(--sage); text-transform:uppercase; margin-bottom:1.5rem; }
+  .hero-h1 { font-family:'Noto Serif TC',serif; font-size:clamp(2.2rem,4vw,3.5rem); font-weight:700; color:var(--cream); line-height:1.3; margin-bottom:1.5rem; position:relative; z-index:1; }
+  .hero-h1 em { font-style:normal; color:var(--sage); display:block; font-size:0.6em; font-weight:400; margin-top:0.3rem; letter-spacing:0.1em; }
+  .hero-desc { color:rgba(254,252,244,0.75); font-size:0.925rem; max-width:380px; margin-bottom:2.5rem; position:relative; z-index:1; }
+  .hero-btn { display:inline-block; background:var(--soil-light); color:var(--white); padding:0.85rem 2.2rem; font-size:0.9rem; letter-spacing:0.08em; text-decoration:none; border-radius:2px; transition:background 0.2s,transform 0.2s; position:relative; z-index:1; align-self:flex-start; }
+  .hero-btn:hover { background:var(--soil); transform:translateY(-1px); }
+  .hero-visual { background:var(--cream-warm); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; padding:4rem 2rem; }
+  .avocado-svg { width:min(320px,55vw); filter:drop-shadow(0 20px 40px rgba(42,74,42,0.15)); }
+  .hero-badges { position:absolute; bottom:2.5rem; right:2rem; display:flex; flex-direction:column; gap:0.5rem; }
+  .badge { background:var(--white); border:1px solid var(--sage-pale); border-radius:2px; padding:0.4rem 0.8rem; font-size:0.75rem; color:var(--forest); letter-spacing:0.05em; white-space:nowrap; }
+
+  /* STRIP */
+  .strip { background:var(--avocado-skin); color:var(--sage-pale); padding:0.85rem 5vw; display:flex; gap:3rem; justify-content:center; font-size:0.8rem; letter-spacing:0.15em; flex-wrap:wrap; }
+  .strip span { display:flex; align-items:center; gap:0.5rem; }
+
+  /* SECTION COMMON */
+  .section-eyebrow { font-size:0.72rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--leaf); margin-bottom:1rem; }
+  .section-title { font-family:'Noto Serif TC',serif; font-size:clamp(1.6rem,2.5vw,2.2rem); font-weight:600; color:var(--forest); line-height:1.4; margin-bottom:1.5rem; }
+
+  /* STORY */
+  .story-section { padding:7rem 8vw; background:var(--cream-warm); }
+  .story-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; margin-bottom:5rem; }
+  .story-grid:last-child { margin-bottom:0; }
+  .story-grid.reverse { direction:rtl; }
+  .story-grid.reverse > * { direction:ltr; }
+  .story-text p { color:var(--text-mid); font-size:0.925rem; line-height:2; }
+  .story-text p + p { margin-top:1rem; }
+  .story-img-wrap { border-radius:4px; overflow:hidden; background:var(--sage-pale); aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; }
+  .story-img-wrap img { width:100%; height:100%; object-fit:cover; }
+  .story-name-origin { margin-top:2rem; padding:1.5rem; background:var(--forest); border-radius:3px; }
+  .story-name-origin p { font-size:0.88rem; color:rgba(254,252,244,0.85); line-height:1.9; }
+  .story-name-origin strong { color:var(--sage); }
+
+  /* ABOUT */
+  .about { display:grid; grid-template-columns:55% 45%; min-height:480px; }
+  .about-story { background:var(--cream); padding:6rem 5vw 6rem 8vw; }
+  .about-text { color:var(--text-mid); font-size:0.925rem; max-width:480px; line-height:2; }
+  .about-facts { background:var(--forest); padding:6rem 4vw; display:flex; flex-direction:column; justify-content:center; gap:2.5rem; }
+  .fact-item { border-left:2px solid var(--sage); padding-left:1.5rem; }
+  .fact-num { font-family:'Noto Serif TC',serif; font-size:2.2rem; font-weight:700; color:var(--sage-pale); line-height:1; margin-bottom:0.4rem; }
+  .fact-label { font-size:0.8rem; color:var(--sage); letter-spacing:0.1em; }
+
+  /* FARMING */
+  .farming-section { padding:6rem 8vw; background:var(--cream); }
+  .farming-intro { color:var(--text-mid); font-size:0.925rem; max-width:600px; margin-bottom:3rem; line-height:2; }
+  .farming-category-title { font-family:'Noto Serif TC',serif; font-size:1.1rem; color:var(--forest); margin-bottom:1.5rem; padding-bottom:0.6rem; border-bottom:2px solid var(--sage-pale); display:flex; align-items:center; gap:0.5rem; }
+  .farming-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.25rem; margin-bottom:3rem; }
+  .farming-card { background:var(--white); border:1px solid var(--sage-pale); border-radius:4px; overflow:hidden; transition:box-shadow 0.2s,transform 0.2s; }
+  .farming-card:hover { box-shadow:0 6px 24px rgba(42,74,42,0.1); transform:translateY(-2px); }
+  .farming-card-icon { height:120px; display:flex; align-items:center; justify-content:center; font-size:3.5rem; }
+  .farming-card-icon.avo { background:linear-gradient(135deg,var(--sage-pale),var(--cream-warm)); }
+  .farming-card-icon.other { background:linear-gradient(135deg,#FFE4A0,#FFF3CC); }
+  .farming-card-body { padding:1rem 1.25rem 1.25rem; }
+  .farming-card-name { font-family:'Noto Serif TC',serif; font-size:0.95rem; font-weight:600; color:var(--forest); margin-bottom:0.4rem; }
+  .farming-card-season { font-size:0.78rem; color:var(--soil); margin-bottom:0.5rem; }
+  .farming-card-desc { font-size:0.82rem; color:var(--text-light); line-height:1.7; }
+  .farming-note { background:var(--cream-warm); border-left:3px solid var(--soil-light); padding:1rem 1.25rem; border-radius:0 3px 3px 0; font-size:0.85rem; color:var(--text-mid); }
+
+  /* PRODUCTS */
+  .products { padding:6rem 8vw; background:var(--forest); }
+  .products .section-eyebrow { color:var(--sage); }
+  .products .section-title { color:var(--cream); }
+  .products-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem; }
+  .product-card { background:rgba(254,252,244,0.05); border:1px solid rgba(168,197,160,0.3); border-radius:4px; overflow:hidden; transition:background 0.2s,transform 0.2s; }
+  .product-card:hover { background:rgba(254,252,244,0.08); transform:translateY(-2px); }
+  .product-icon { height:120px; display:flex; align-items:center; justify-content:center; font-size:3.5rem; }
+  .product-icon.avo { background:rgba(168,197,160,0.1); }
+  .product-icon.mango { background:rgba(255,220,100,0.1); }
+  .product-icon.passion { background:rgba(200,150,255,0.1); }
+  .product-icon.corn { background:rgba(255,240,100,0.1); }
+  .product-body { padding:1.25rem 1.5rem 1.5rem; }
+  .product-name { font-family:'Noto Serif TC',serif; font-size:1rem; font-weight:600; color:var(--cream); margin-bottom:0.4rem; }
+  .product-desc { font-size:0.82rem; color:rgba(168,197,160,0.8); margin-bottom:1rem; line-height:1.7; }
+  .product-prices { display:flex; flex-direction:column; gap:0.3rem; }
+  .price-row { display:flex; justify-content:space-between; font-size:0.82rem; padding:0.3rem 0; border-bottom:1px solid rgba(168,197,160,0.15); }
+  .price-row:last-child { border:none; }
+  .price-label { color:rgba(254,252,244,0.6); }
+  .price-val { color:var(--soil-light); font-weight:500; }
+  .product-note { margin-top:0.8rem; font-size:0.75rem; color:rgba(168,197,160,0.7); font-style:italic; }
+
+  /* KNOWLEDGE */
+  .knowledge-section { padding:6rem 8vw; background:var(--cream-warm); }
+  .knowledge-tabs { display:flex; gap:0.75rem; margin-bottom:2.5rem; flex-wrap:wrap; }
+  .k-tab { padding:0.5rem 1.25rem; border:1px solid var(--sage-pale); border-radius:20px; background:var(--white); color:var(--text-mid); cursor:pointer; font-size:0.85rem; transition:all 0.15s; font-family:'Noto Sans TC',sans-serif; }
+  .k-tab:hover,.k-tab.active { background:var(--forest); color:var(--cream); border-color:var(--forest); }
+  .k-panel { display:none; }
+  .k-panel.active { display:block; }
+  .ripeness-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.25rem; }
+  .ripeness-card { background:var(--white); border-radius:4px; border:1px solid var(--sage-pale); padding:1.5rem; text-align:center; }
+  .ripeness-color { width:60px; height:60px; border-radius:50%; margin:0 auto 1rem; display:flex; align-items:center; justify-content:center; font-size:1.8rem; }
+  .ripeness-stage { font-family:'Noto Serif TC',serif; font-size:0.95rem; color:var(--forest); margin-bottom:0.5rem; font-weight:600; }
+  .ripeness-desc { font-size:0.8rem; color:var(--text-light); line-height:1.7; }
+  .storage-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+  .storage-card { background:var(--white); border-radius:4px; border:1px solid var(--sage-pale); padding:1.75rem; }
+  .storage-icon { font-size:2rem; margin-bottom:0.75rem; }
+  .storage-title { font-family:'Noto Serif TC',serif; font-size:1rem; color:var(--forest); margin-bottom:0.75rem; font-weight:600; }
+  .storage-list { list-style:none; }
+  .storage-list li { font-size:0.85rem; color:var(--text-mid); padding:0.35rem 0; border-bottom:1px solid var(--cream-warm); line-height:1.7; }
+  .storage-list li:last-child { border:none; }
+  .storage-list li::before { content:'→ '; color:var(--leaf); }
+  .k-img-wrap { border-radius:4px; overflow:hidden; background:var(--sage-pale); }
+  .k-img-wrap img { width:100%; display:block; }
+
+  /* HOW */
+  .how { background:var(--avocado-skin); padding:5rem 8vw; }
+  .how .section-title { color:var(--cream); margin-bottom:3rem; }
+  .how .section-eyebrow { color:var(--sage); }
+  .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:2rem; }
+  .step-num { font-family:'Noto Serif TC',serif; font-size:2.5rem; font-weight:700; color:var(--sage); opacity:0.4; line-height:1; margin-bottom:0.75rem; }
+  .step-title { font-size:0.95rem; font-weight:500; color:var(--cream); margin-bottom:0.5rem; }
+  .step-desc { font-size:0.82rem; color:var(--sage); line-height:1.8; }
+
+  /* TASTE / IG */
+  .taste-section { padding:6rem 8vw; background:var(--cream); }
+  .taste-intro { color:var(--text-mid); font-size:0.925rem; max-width:560px; margin-bottom:2.5rem; line-height:2; }
+  .ig-embed-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; }
+  .ig-placeholder { background:var(--cream-warm); border:1px solid var(--sage-pale); border-radius:4px; padding:2rem; text-align:center; }
+  .ig-placeholder p { font-size:0.85rem; color:var(--text-light); margin-top:0.75rem; }
+  .ig-embed-wrap { border-radius:4px; overflow:hidden; background:var(--cream-warm); }
+  .ig-cta { margin-top:2rem; display:inline-flex; align-items:center; gap:0.5rem; background:var(--forest); color:var(--cream); padding:0.75rem 1.75rem; border-radius:2px; text-decoration:none; font-size:0.88rem; letter-spacing:0.05em; transition:background 0.2s; }
+  .ig-cta:hover { background:var(--leaf); }
+
+  /* ORDER FORM */
+  .order-section { padding:6rem 8vw; background:var(--cream-warm); }
+  .order-subtitle { color:var(--text-light); font-size:0.9rem; margin-bottom:3rem; }
+  .order-form { max-width:760px; background:var(--white); border:1px solid var(--sage-pale); border-radius:4px; padding:2.5rem; }
+  .form-section-title { font-family:'Noto Serif TC',serif; font-size:1rem; color:var(--forest); margin-bottom:1.25rem; padding-bottom:0.6rem; border-bottom:1px solid var(--sage-pale); }
+  .product-order-grid { display:grid; gap:1rem; margin-bottom:2rem; }
+  .product-row { display:grid; grid-template-columns:1fr auto auto; align-items:center; gap:1rem; padding:0.75rem; background:var(--cream); border-radius:3px; }
+  .product-row-name { font-size:0.88rem; font-weight:500; color:var(--text-dark); }
+  .product-row-price { font-size:0.78rem; color:var(--soil); }
+  .qty-control { display:flex; align-items:center; gap:0.5rem; }
+  .qty-btn { width:28px; height:28px; background:var(--cream-warm); border:1px solid var(--sage-pale); border-radius:2px; cursor:pointer; font-size:1rem; color:var(--forest); display:flex; align-items:center; justify-content:center; transition:background 0.15s; }
+  .qty-btn:hover { background:var(--sage-pale); }
+  .qty-display { width:32px; text-align:center; font-size:0.9rem; font-weight:500; color:var(--forest); }
+  .product-subtotal { font-size:0.85rem; font-weight:500; color:var(--forest); min-width:64px; text-align:right; }
+  .order-total-bar { background:var(--forest); color:var(--cream); padding:1rem 1.25rem; border-radius:3px; display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem; font-size:0.9rem; }
+  .total-amount { font-family:'Noto Serif TC',serif; font-size:1.3rem; font-weight:700; }
+  .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem; }
+  .form-group { display:flex; flex-direction:column; gap:0.4rem; }
+  .form-group.full { grid-column:1/-1; }
+  label { font-size:0.8rem; color:var(--text-mid); letter-spacing:0.05em; }
+  label .required { color:var(--soil); margin-left:0.2rem; }
+  input,select,textarea { padding:0.65rem 0.9rem; border:1px solid var(--sage-pale); border-radius:3px; font-family:'Noto Sans TC',sans-serif; font-size:0.88rem; color:var(--text-dark); background:var(--cream); outline:none; transition:border-color 0.2s; }
+  input:focus,select:focus,textarea:focus { border-color:var(--leaf); background:var(--white); }
+  textarea { resize:vertical; min-height:80px; }
+  .payment-info { background:var(--cream); border:1px solid var(--sage-pale); border-radius:3px; padding:1.25rem; margin-bottom:1.5rem; }
+  .payment-title { font-size:0.82rem; color:var(--text-mid); margin-bottom:0.6rem; }
+  .payment-detail { font-size:0.88rem; color:var(--forest); font-weight:500; }
+  .submit-btn { width:100%; background:var(--forest); color:var(--cream); border:none; cursor:pointer; padding:1rem; font-family:'Noto Sans TC',sans-serif; font-size:0.95rem; letter-spacing:0.1em; border-radius:3px; transition:background 0.2s; }
+  .submit-btn:hover { background:var(--leaf); }
+  .form-note { margin-top:1rem; font-size:0.78rem; color:var(--text-light); text-align:center; line-height:1.7; }
+  .form-note a { color:var(--leaf); }
+  .success-msg { display:none; background:var(--forest); color:var(--cream); padding:2rem; border-radius:4px; text-align:center; }
+  .success-msg.show { display:block; }
+  .success-msg h3 { font-family:'Noto Serif TC',serif; font-size:1.3rem; margin-bottom:0.75rem; }
+  .success-msg p { font-size:0.88rem; opacity:0.8; }
+
+  /* FOOTER */
+  footer { background:var(--text-dark); color:rgba(254,252,244,0.6); padding:3.5rem 8vw 2rem; }
+  .footer-inner { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-bottom:3rem; }
+  .footer-brand-name { font-family:'Noto Serif TC',serif; font-size:1.1rem; color:var(--cream); margin-bottom:0.75rem; }
+  .footer-tagline { font-size:0.82rem; line-height:1.8; }
+  .footer-contact h4 { font-size:0.8rem; letter-spacing:0.1em; color:var(--cream); margin-bottom:1rem; }
+  .footer-contact p { font-size:0.82rem; margin-bottom:0.4rem; }
+  .footer-contact a { color:var(--sage); text-decoration:none; }
+  .footer-bottom { border-top:1px solid rgba(254,252,244,0.1); padding-top:1.5rem; font-size:0.75rem; text-align:center; }
+
+  /* MOBILE */
+  @media(max-width:768px) {
+    .hero { grid-template-columns:1fr; }
+    .hero-text { padding:4rem 5vw 3rem; order:2; }
+    .hero-visual { order:1; min-height:260px; }
+    .about { grid-template-columns:1fr; }
+    .about-facts { flex-direction:row; flex-wrap:wrap; gap:1.5rem; padding:3rem 5vw; }
+    .form-grid { grid-template-columns:1fr; }
+    .nav-links { display:none; }
+    .product-row { grid-template-columns:1fr; }
+    .footer-inner { grid-template-columns:1fr; gap:2rem; }
+    .order-form { padding:1.5rem; }
+    .story-grid,.storage-grid { grid-template-columns:1fr; gap:2rem; }
+    .story-grid.reverse { direction:ltr; }
+    .ig-embed-grid { grid-template-columns:1fr; }
+    .knowledge-section,.farming-section,.taste-section,.story-section,.products { padding:4rem 5vw; }
+    .order-section { padding:4rem 5vw; }
+    .about-story { padding:4rem 5vw; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">南屏玉果農場</a>
+  <ul class="nav-links">
+    <li><a href="#story">農場故事</a></li>
+    <li><a href="#farming">農作介紹</a></li>
+    <li class="nav-dropdown">
+      <a href="#knowledge">酪梨小知識 ▾</a>
+      <div class="nav-dropdown-menu">
+        <a href="#knowledge" onclick="switchTab('ripeness')">如何看熟度</a>
+        <a href="#knowledge" onclick="switchTab('storage')">保存方法</a>
+      </div>
+    </li>
+    <li><a href="#taste">酪梨好味道</a></li>
+    <li><a href="#order" class="nav-cta">立即訂購</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">屏東 · 大武山腳下 · 友善耕作</p>
+    <h1 class="hero-h1">
+      每顆酪梨<br>都是一份承諾
+      <em>陽光 · 自然 · 無毒 · 自耕小農</em>
+    </h1>
+    <p class="hero-desc">依傍大武山與東港溪流域，我們用友善耕作守護這片土地，不灑農藥、不施化肥，只願每一顆果實都誠實回應自然的餽贈。</p>
+    <a href="#order" class="hero-btn">選購農作 →</a>
+  </div>
+  <div class="hero-visual">
+    <div style="position:relative;display:flex;align-items:center;justify-content:center;">
+      <svg class="avocado-svg" viewBox="0 0 300 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="150" cy="210" rx="110" ry="145" fill="#3B4A1E"/>
+        <ellipse cx="150" cy="215" rx="88" ry="118" fill="#A8C87A"/>
+        <ellipse cx="150" cy="220" rx="70" ry="98" fill="#D4E88A"/>
+        <ellipse cx="150" cy="235" rx="38" ry="42" fill="#7A5C2E"/>
+        <ellipse cx="143" cy="228" rx="12" ry="14" fill="rgba(255,255,255,0.15)"/>
+        <path d="M150 65 C148 50 155 35 162 20" stroke="#5C8A4A" stroke-width="4" stroke-linecap="round"/>
+        <ellipse cx="167" cy="16" rx="8" ry="5" fill="#5C8A4A" transform="rotate(-20 167 16)"/>
+        <path d="M155 55 C170 30 200 25 210 45 C220 65 195 75 175 70 C155 65 145 80 155 55Z" fill="#4A7A3A"/>
+        <path d="M155 55 C175 48 200 42 210 45" stroke="#3D6B3D" stroke-width="1.5" stroke-linecap="round"/>
+        <ellipse cx="118" cy="170" rx="12" ry="20" fill="rgba(255,255,255,0.08)" transform="rotate(-20 118 170)"/>
+      </svg>
+    </div>
+    <div class="hero-badges">
+      <div class="badge">✓ 不使用農藥</div>
+      <div class="badge">✓ 無除草劑</div>
+      <div class="badge">✓ 無化學肥料</div>
+      <div class="badge">✓ 含運費直送</div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <span>🌿 友善耕作</span>
+  <span>🏔️ 大武山腳下</span>
+  <span>💧 純淨水源灌溉</span>
+  <span>📦 宅配到府含運</span>
+  <span>🥑 大顆哈斯系品種</span>
+</div>
+
+<!-- STORY -->
+<section id="story" class="story-section">
+  <p class="section-eyebrow">南屏玉果故事</p>
+  <h2 class="section-title">爸爸的承諾<br>與這片土地</h2>
+
+  <div class="story-grid">
+    <div class="story-text">
+      <p>在屏東這片陽光燦爛、土地肥沃的南方沃土上，「南屏玉果」的誕生，不只是農業的轉變，更是一個家庭對家的承諾。</p>
+      <p>過去，這片土地種滿了檳榔樹，曾經是家中重要的經濟來源。然而，當爸爸決定回到屏東照顧年邁的阿公、阿嬤時，他開始重新思考土地的未來。中年回鄉的他，不只是為了盡孝，更想讓這塊土地變得更有價值，為家人、為這片大地帶來更健康的可能性。</p>
+      <p>於是，他做了一個大膽的決定——放下過去熟悉的耕作方式，將檳榔園轉型為酪梨園。從土壤調整、樹苗選育到學習如何以友善農法栽種，每一步都是挑戰。然而，他相信，土地就像家人一樣，只要用心照顧，就會回饋最好的成果。</p>
+      <div class="story-name-origin">
+        <p>農場的名字，來自兩位深深影響著我們的人——阿公與阿嬤。<br>
+        <strong>「屏」</strong>是為了紀念阿公對家庭與土地的守護；<strong>「玉」</strong>則是阿嬤如玉般溫潤的愛與照顧。<br>
+        我們將他們的名字融入品牌中，不只是思念，更是傳承。</p>
+      </div>
+    </div>
+    <div class="story-img-wrap">
+      <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUDzVFB03G-7NRnJCgnuf-P4EVFGToqQ_uSecxr-olxF86d6yvfgavrZxIqgklUeQpoGqO1VN5k6J7IduztAu7u_SSF-07Zto0yr8JNRzGIzBjzpbqzrjw4T3Bluz2lrfkz6UST5r_83-bl_kD3Ujhrn_RoOsa-35iCwTO2Z0Yu4lw6kyuiLKwbTnwDHTZ2oVXJ7YBSI7MTojY6EEN7sBEncJeG76dPAQa07feHI=w1280" alt="南屏玉果農場故事" onerror="this.style.display='none'">
+    </div>
+  </div>
+
+  <div class="story-grid reverse">
+    <div class="story-text">
+      <p>南屏玉果農場的酪梨，生長在大武山的庇護下，沐浴著屏東充足的陽光，汲取東港溪與林邊溪流域的純淨水源。我們堅持無毒種植，不使用化學農藥與化肥，讓每一顆酪梨都能保留最天然的風味與營養。</p>
+      <p>我們希望，這不只是好吃的水果，更是一種對健康、對環境負責的選擇。這是一個關於「回歸」的故事——回歸家鄉、回歸初心、回歸對土地的尊重與珍惜。</p>
+      <p>如今，南屏玉果農場不只是我們的夢想，更是一份希望，讓每一位品嚐我們酪梨的人，都能感受到這片土地的純粹與溫暖。我們誠摯地邀請你，一同品味這來自南國陽光下的美好滋味。</p>
+    </div>
+    <div class="story-img-wrap">
+      <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUCJVuWbrbEDQB4GA6pJmWbnrrw5QlEzUR8BHrVlAxNBXTcy9Vkpk8qEQpdyZKGyyW2rccv-_u4XI3wNdfzcHH6rO6ckLPnE1JP9pUCeZRTqMUZG13UbPeazYQIRSSHgcXLkEdwGZiqLpYZJ8CebGjHqDxSNRdrZJeNHs0PGDUUe1sKJZfwvCO2_VbbrAoVlV1-7G1qVG6znXxQiGLhLq3RFlKcQSgbfwfwukZNweUA=w1280" alt="回歸土地品味純真" onerror="this.style.display='none'">
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT FACTS -->
+<section class="about">
+  <div class="about-story">
+    <p class="section-eyebrow">我們的堅持</p>
+    <h2 class="section-title">友善耕作<br>不只是口號</h2>
+    <p class="about-text">
+      從一開始轉型，我們就決定走一條比較難的路。不用農藥意味著要花更多時間觀察、更多人工除草；不用化肥意味著產量可能不如慣行農法穩定。但我們相信，這是對土地、對消費者最誠實的選擇。
+    </p>
+  </div>
+  <div class="about-facts">
+    <div class="fact-item"><div class="fact-num">0</div><div class="fact-label">化學農藥使用量</div></div>
+    <div class="fact-item"><div class="fact-num">0</div><div class="fact-label">除草劑與化肥</div></div>
+    <div class="fact-item"><div class="fact-num">屏東</div><div class="fact-label">大武山腳下產地直送</div></div>
+    <div class="fact-item"><div class="fact-num">小農</div><div class="fact-label">自耕自銷・親力親為</div></div>
+  </div>
+</section>
+
+<!-- FARMING -->
+<section id="farming" class="farming-section">
+  <p class="section-eyebrow">南屏玉果農作介紹</p>
+  <h2 class="section-title">當季農作・友善種植</h2>
+  <p class="farming-intro">我們的農作依照節氣與自然時序採收，出貨品種以當時節氣採收為主。以下是農場目前栽培的主要品項：</p>
+
+  <div class="farming-category-title">🥑 酪梨系列</div>
+  <div class="farming-grid">
+    <div class="farming-card">
+      <div class="farming-card-icon avo">🥑</div>
+      <div class="farming-card-body">
+        <div class="farming-card-name">哈斯系大顆酪梨</div>
+        <div class="farming-card-season">📅 主產季：夏秋</div>
+        <div class="farming-card-desc">果肉飽滿細緻，口感滑順濃郁，富含健康不飽和脂肪酸，是我們農場的主力品項。</div>
+      </div>
+    </div>
+    <div class="farming-card">
+      <div class="farming-card-icon avo">🌿</div>
+      <div class="farming-card-body">
+        <div class="farming-card-name">友善耕作認證</div>
+        <div class="farming-card-season">✓ 無農藥・無化肥</div>
+        <div class="farming-card-desc">全程不使用化學農藥、除草劑與化肥，讓土地休養生息，回饋最天然的風味。</div>
+      </div>
+    </div>
+    <div class="farming-card">
+      <div class="farming-card-icon avo">📦</div>
+      <div class="farming-card-body">
+        <div class="farming-card-name">產地直送・品鮮保證</div>
+        <div class="farming-card-season">🚚 含運費宅配到府</div>
+        <div class="farming-card-desc">採收後直接宅配，減少中間流通，讓你拿到最新鮮的果實，價格也更實惠。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="farming-category-title" style="margin-top:2rem">🌺 其他系列（產量有限）</div>
+  <div class="farming-grid">
+    <div class="farming-card">
+      <div class="farming-card-icon other">🥭</div>
+      <div class="farming-card-body">
+        <div class="farming-card-name">無毒愛文芒果</div>
+        <div class="farming-card-season">📅 產季：夏季</div>
+        <div class="farming-card-desc">在欉紅採收，甜度高、香氣濃。因為沒有農藥，表皮可能有些自然痕跡，但口感純天然甜美。</div>
+      </div>
+    </div>
+    <div class="farming-card">
+      <div class="farming-card-icon other">🌺</div>
+      <div class="farming-card-body">
+        <div class="farming-card-name">無毒滿天星百香果</div>
+        <div class="farming-card-season">📅 本年度已售完</div>
+        <div class="farming-card-desc">香氣濃郁，酸甜平衡。自然農法栽種，每一顆都是農場的驕傲。明年再見！</div>
+      </div>
+    </div>
+    <div class="farming-card">
+      <div class="farming-card-icon other">🌽</div>
+      <div class="farming-card-body">
+        <div class="farming-card-name">無毒白玉米</div>
+        <div class="farming-card-season">📅 預計 1～3月採收</div>
+        <div class="farming-card-desc">冬季限定，甜度高、口感Q彈。自然農法栽培，清甜原味，歡迎提早預訂。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="farming-note" style="margin-top:1.5rem">
+    ⚠️ 因為堅持友善農法，部分農作外觀可能不如慣行農法完美，但這正是無毒種植的誠實呈現。我們相信，好的食物不需要過度修飾。
+  </div>
+</section>
+
+<!-- PRODUCTS PRICING -->
+<section id="products" class="products">
+  <p class="section-eyebrow">選購農作</p>
+  <h2 class="section-title">新鮮直送・透明定價</h2>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-icon avo">🥑</div>
+      <div class="product-body">
+        <div class="product-name">無毒酪梨 8台斤</div>
+        <div class="product-desc">約 8～10 顆，適合一般家庭嚐鮮。</div>
+        <div class="product-prices">
+          <div class="price-row"><span class="price-label">含運費宅配</span><span class="price-val">NT$650</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-icon avo">🥑</div>
+      <div class="product-body">
+        <div class="product-name">無毒酪梨 10台斤</div>
+        <div class="product-desc">約 10～12 顆，最受歡迎的選擇。</div>
+        <div class="product-prices">
+          <div class="price-row"><span class="price-label">含運費宅配</span><span class="price-val">NT$780</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-icon avo">🥑</div>
+      <div class="product-body">
+        <div class="product-name">無毒酪梨 20台斤</div>
+        <div class="product-desc">約 20～24 顆，適合家庭囤貨或送禮。</div>
+        <div class="product-prices">
+          <div class="price-row"><span class="price-label">含運費宅配</span><span class="price-val">NT$1,450</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-icon mango">🥭</div>
+      <div class="product-body">
+        <div class="product-name">無毒愛文芒果 10台斤</div>
+        <div class="product-desc">約 10～15 顆，產量有限，售完為止。</div>
+        <div class="product-prices">
+          <div class="price-row"><span class="price-label">含運費宅配</span><span class="price-val">NT$800</span></div>
+        </div>
+        <div class="product-note">⚠️ 產量有限，售完為止</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KNOWLEDGE -->
+<section id="knowledge" class="knowledge-section">
+  <p class="section-eyebrow">酪梨小知識</p>
+  <h2 class="section-title">讓每顆酪梨<br>都發揮最佳風味</h2>
+
+  <div class="knowledge-tabs">
+    <button class="k-tab active" onclick="switchTab('ripeness')">🥑 如何判斷熟度</button>
+    <button class="k-tab" onclick="switchTab('storage')">🧊 保存方法</button>
+  </div>
+
+  <!-- RIPENESS -->
+  <div class="k-panel active" id="panel-ripeness">
+    <p style="color:var(--text-mid);font-size:0.9rem;margin-bottom:2rem;max-width:560px;line-height:2;">
+      我們出貨的酪梨通常還未完全熟成，這是為了確保運送途中不會過熟壓傷。收到後請依照下方顏色與手感判斷熟度，等到最佳時機再享用！
+    </p>
+    <div class="ripeness-grid">
+      <div class="ripeness-card">
+        <div class="ripeness-color" style="background:#6B8C3E;">🌿</div>
+        <div class="ripeness-stage">青綠色・硬實</div>
+        <div class="ripeness-desc">剛採收或剛收到。果肉還未軟化，需要繼續催熟，放室溫 3～5 天。</div>
+      </div>
+      <div class="ripeness-card">
+        <div class="ripeness-color" style="background:#3D5C1E;">🥑</div>
+        <div class="ripeness-stage">深綠轉黑・微彈</div>
+        <div class="ripeness-desc">接近熟成，輕壓有微微彈性。再等 1～2 天即可享用，是最佳時機前奏。</div>
+      </div>
+      <div class="ripeness-card">
+        <div class="ripeness-color" style="background:#2A3A14;">✅</div>
+        <div class="ripeness-stage">黑色・按壓有彈性</div>
+        <div class="ripeness-desc">最佳賞味時機！果肉滑順、香氣濃郁。輕壓有彈性但不軟爛，立即享用最美味。</div>
+      </div>
+      <div class="ripeness-card">
+        <div class="ripeness-color" style="background:#1A2510;">⚠️</div>
+        <div class="ripeness-stage">全黑・按壓過軟</div>
+        <div class="ripeness-desc">過熟，果肉可能有褐化。建議立即食用或製成酪梨醬、酪梨牛奶使用。</div>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem;background:var(--forest);color:var(--cream);padding:1.25rem 1.5rem;border-radius:3px;font-size:0.85rem;line-height:1.9;">
+      💡 <strong>催熟小撇步：</strong>把酪梨和香蕉或蘋果放在一起，裝入紙袋中，可以加速熟成。想要放慢熟成速度，就放進冰箱冷藏。
+    </div>
+  </div>
+
+  <!-- STORAGE -->
+  <div class="k-panel" id="panel-storage">
+    <p style="color:var(--text-mid);font-size:0.9rem;margin-bottom:2rem;max-width:560px;line-height:2;">
+      正確保存酪梨，才能在最佳時機享用。未熟、已熟、切開的酪梨，保存方式各有不同：
+    </p>
+    <div class="storage-grid">
+      <div class="storage-card">
+        <div class="storage-icon">🌿</div>
+        <div class="storage-title">未熟酪梨（硬實）</div>
+        <ul class="storage-list">
+          <li>放置室溫陰涼處自然催熟</li>
+          <li>約 3～7 天達到最佳熟度</li>
+          <li>想加速催熟：裝進紙袋，和香蕉一起放</li>
+          <li>避免陽光直射或高溫環境</li>
+        </ul>
+      </div>
+      <div class="storage-card">
+        <div class="storage-icon">✅</div>
+        <div class="storage-title">已熟酪梨（完整）</div>
+        <ul class="storage-list">
+          <li>放入冰箱冷藏，可保存 2～3 天</li>
+          <li>避免和有強烈氣味的食物放在一起</li>
+          <li>已熟後不要再放室溫，會過快軟化</li>
+          <li>建議盡快食用，風味最佳</li>
+        </ul>
+      </div>
+      <div class="storage-card">
+        <div class="storage-icon">🔪</div>
+        <div class="storage-title">切開的酪梨（剩餘）</div>
+        <ul class="storage-list">
+          <li>保留果核，有助延緩氧化變黑</li>
+          <li>表面塗抹少許檸檬汁防止褐化</li>
+          <li>用保鮮膜緊貼果肉包覆，放冰箱</li>
+          <li>盡量在 1 天內食用完畢</li>
+        </ul>
+      </div>
+      <div class="storage-card">
+        <div class="storage-icon">❄️</div>
+        <div class="storage-title">冷凍保存（大量時）</div>
+        <ul class="storage-list">
+          <li>去皮去核後切塊或壓成泥</li>
+          <li>加入少許檸檬汁拌勻防氧化</li>
+          <li>裝入密封袋冷凍，可保存 3～6 個月</li>
+          <li>適合做成酪梨牛奶、沙拉醬使用</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <p class="section-eyebrow">訂購流程</p>
+  <h2 class="section-title">四步驟・輕鬆到府</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">選擇商品與數量</div>
+      <div class="step-desc">在下方訂購表單選擇您需要的品項與箱數，系統自動計算金額。</div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">填寫收件資訊</div>
+      <div class="step-desc">填入姓名、電話、Email 與完整收件地址。</div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">匯款確認</div>
+      <div class="step-desc">依訂單金額匯款至台灣企銀(050)帳號，並填入匯款末五碼。</div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-title">LINE 通知・等候到府</div>
+      <div class="step-desc">加入官方 LINE @905zltzj 告知已匯款，我們確認後安排出貨。</div>
+    </div>
+  </div>
+</section>
+
+<!-- TASTE / IG -->
+<section id="taste" class="taste-section">
+  <p class="section-eyebrow">酪梨好味道</p>
+  <h2 class="section-title">從農場到餐桌<br>每一口都是享受</h2>
+  <p class="taste-intro">
+    酪梨不只是沙拉的配角！我們在 Instagram 分享各種酪梨料理影音食譜，從簡單的酪梨吐司到進階的酪梨鮮蝦沙拉，讓你每天都有新靈感。
+  </p>
+
+  <div class="ig-embed-grid">
+    <!-- IG Embed 1 -->
+    <div class="ig-embed-wrap">
+      <blockquote class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/reel/DLAX1RFJjDV/?utm_source=ig_embed"
+        data-instgrm-version="14"
+        style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:1px;max-width:100%;padding:0;width:100%;">
+        <div style="padding:16px;">
+          <a href="https://www.instagram.com/reel/DLAX1RFJjDV/" target="_blank"
+            style="background:#FFFFFF;line-height:0;padding:0;text-align:center;text-decoration:none;width:100%;">
+            <div style="display:flex;flex-direction:row;align-items:center;">
+              <div style="background-color:#F4F4F4;border-radius:50%;height:40px;width:40px;"></div>
+              <div style="display:flex;flex-direction:column;margin-left:8px;">
+                <div style="background-color:#F4F4F4;height:8px;width:100px;border-radius:4px;"></div>
+                <div style="background-color:#F4F4F4;height:8px;width:60px;border-radius:4px;margin-top:4px;"></div>
+              </div>
+            </div>
+            <div style="padding:19% 0;"></div>
+            <div style="display:block;height:50px;margin:0 auto 12px;width:50px;">
+              <svg width="50px" height="50px" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                <g fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000">
+                <path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.756,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.756,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path>
+                </g></g>
+              </svg>
+            </div>
+            <div style="padding-top:8px;color:#3897f0;font-size:14px;font-weight:550;line-height:18px;">在 Instagram 查看這則貼文</div>
+            <p style="margin:8px 0 0 0;padding:0 4px;font-size:14px;color:#999;">一分半教你做出營養美味的酪梨鮮蝦沙拉 🥑🍤</p>
+          </a>
+        </div>
+      </blockquote>
+    </div>
+
+    <!-- IG 說明卡 -->
+    <div style="display:flex;flex-direction:column;gap:1rem;">
+      <div style="background:var(--cream-warm);border:1px solid var(--sage-pale);border-radius:4px;padding:1.75rem;">
+        <div style="font-size:1.5rem;margin-bottom:0.75rem;">🥑</div>
+        <div style="font-family:'Noto Serif TC',serif;font-size:1rem;color:var(--forest);margin-bottom:0.5rem;font-weight:600;">酪梨鮮蝦沙拉</div>
+        <p style="font-size:0.85rem;color:var(--text-mid);line-height:1.8;">一分半就能上桌的營養美味料理！果編親自示範，酪梨的滑順配上鮮蝦的彈性，清爽又飽足。</p>
+      </div>
+      <div style="background:var(--cream-warm);border:1px solid var(--sage-pale);border-radius:4px;padding:1.75rem;">
+        <div style="font-size:1.5rem;margin-bottom:0.75rem;">📱</div>
+        <div style="font-family:'Noto Serif TC',serif;font-size:1rem;color:var(--forest);margin-bottom:0.5rem;font-weight:600;">更多影音食譜</div>
+        <p style="font-size:0.85rem;color:var(--text-mid);line-height:1.8;">我們持續在 Instagram 分享酪梨料理靈感，從早餐到正餐，從甜點到飲品，讓你每天都有新玩法。</p>
+        <a href="https://www.instagram.com/" target="_blank" class="ig-cta" style="margin-top:1rem;display:inline-flex;">📷 追蹤我們的 IG</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER FORM -->
+<section id="order" class="order-section">
+  <p class="section-eyebrow">立即訂購</p>
+  <h2 class="section-title">選購農場直送好物</h2>
+  <p class="order-subtitle">所有商品均含運費 · 宅配到府 · 新鮮保證</p>
+
+  <div class="order-form" id="orderForm">
+    <div class="form-section-title">第一步：選擇農作品項</div>
+    <div class="product-order-grid">
+      <div class="product-row" data-price="650" data-id="avo8">
+        <div><div class="product-row-name">🥑 無毒酪梨 8台斤（約8~10顆）</div><div class="product-row-price">NT$650 / 箱 · 含運</div></div>
+        <div class="qty-control">
+          <button class="qty-btn" onclick="changeQty('avo8',-1)">−</button>
+          <div class="qty-display" id="qty-avo8">0</div>
+          <button class="qty-btn" onclick="changeQty('avo8',1)">+</button>
+        </div>
+        <div class="product-subtotal" id="sub-avo8">NT$0</div>
+      </div>
+      <div class="product-row" data-price="780" data-id="avo10">
+        <div><div class="product-row-name">🥑 無毒酪梨 10台斤（約10~12顆）</div><div class="product-row-price">NT$780 / 箱 · 含運</div></div>
+        <div class="qty-control">
+          <button class="qty-btn" onclick="changeQty('avo10',-1)">−</button>
+          <div class="qty-display" id="qty-avo10">0</div>
+          <button class="qty-btn" onclick="changeQty('avo10',1)">+</button>
+        </div>
+        <div class="product-subtotal" id="sub-avo10">NT$0</div>
+      </div>
+      <div class="product-row" data-price="1450" data-id="avo20">
+        <div><div class="product-row-name">🥑 無毒酪梨 20台斤（約20~24顆）</div><div class="product-row-price">NT$1,450 / 箱 · 含運</div></div>
+        <div class="qty-control">
+          <button class="qty-btn" onclick="changeQty('avo20',-1)">−</button>
+          <div class="qty-display" id="qty-avo20">0</div>
+          <button class="qty-btn" onclick="changeQty('avo20',1)">+</button>
+        </div>
+        <div class="product-subtotal" id="sub-avo20">NT$0</div>
+      </div>
+      <div class="product-row" data-price="800" data-id="mango">
+        <div><div class="product-row-name">🥭 無毒愛文芒果 10台斤（約10~15顆）</div><div class="product-row-price">NT$800 / 箱 · 含運 <span style="color:var(--soil);font-size:0.75rem">（產量有限）</span></div></div>
+        <div class="qty-control">
+          <button class="qty-btn" onclick="changeQty('mango',-1)">−</button>
+          <div class="qty-display" id="qty-mango">0</div>
+          <button class="qty-btn" onclick="changeQty('mango',1)">+</button>
+        </div>
+        <div class="product-subtotal" id="sub-mango">NT$0</div>
+      </div>
+      <div class="product-row" data-price="0" data-id="corn" style="opacity:0.6">
+        <div><div class="product-row-name">🌽 無毒白玉米 20台斤（預購）</div><div class="product-row-price" style="color:var(--text-light)">預計 1~3月採收 · 歡迎預訂</div></div>
+        <div class="qty-control">
+          <button class="qty-btn" onclick="changeQty('corn',-1)">−</button>
+          <div class="qty-display" id="qty-corn">0</div>
+          <button class="qty-btn" onclick="changeQty('corn',1)">+</button>
+        </div>
+        <div class="product-subtotal" id="sub-corn">預購</div>
+      </div>
+    </div>
+
+    <div class="order-total-bar">
+      <span>訂單總金額（含運費）</span>
+      <span class="total-amount" id="totalAmount">NT$0</span>
+    </div>
+
+    <div class="form-section-title">第二步：填寫收件資訊</div>
+    <div class="form-grid">
+      <div class="form-group"><label>訂購者姓名<span class="required">*</span></label><input type="text" id="name" placeholder="請輸入真實姓名（宅配使用）"></div>
+      <div class="form-group"><label>聯絡電話<span class="required">*</span></label><input type="tel" id="phone" placeholder="手機或家用電話"></div>
+      <div class="form-group full"><label>電子郵件<span class="required">*</span></label><input type="email" id="email" placeholder="訂購確認信將寄至此信箱"></div>
+      <div class="form-group full"><label>收件地址<span class="required">*</span></label><input type="text" id="address" placeholder="請填寫完整地址（含郵遞區號）"></div>
+      <div class="form-group full"><label>備註（選填）</label><textarea id="note" placeholder="有任何特殊需求或問題，歡迎在此說明"></textarea></div>
+    </div>
+
+    <div class="form-section-title">第三步：匯款資訊</div>
+    <div class="payment-info">
+      <div class="payment-title">請匯款至以下帳戶</div>
+      <div class="payment-detail">台灣企銀（050）帳號：85164608331</div>
+    </div>
+    <div class="form-grid">
+      <div class="form-group full"><label>匯款末五碼<span class="required">*</span>（供對帳使用）</label><input type="text" id="transfer" placeholder="請填入匯款末五碼" maxlength="5"></div>
+    </div>
+
+    <button class="submit-btn" onclick="submitOrder()">確認送出訂單</button>
+    <div class="form-note">
+      送出後請加入官方 LINE <a href="https://lin.ee/pZAcOkK">@905zltzj</a> 告知已匯款，我們將盡快確認並安排出貨。<br>
+      如有疑問請聯絡 rocanllo2022@gmail.com
+    </div>
+  </div>
+
+  <div class="success-msg" id="successMsg">
+    <h3>🌿 感謝您的訂購！</h3>
+    <p>我們已收到您的訂單。<br>請記得加入官方 LINE <strong>@905zltzj</strong> 告知已匯款，以便我們盡快安排出貨。</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name">南屏玉果農場</div>
+      <div class="footer-tagline">在屏東大武山腳下，我們堅持友善耕作，<br>讓每一顆果實都誠實回應這片土地的恩賜。<br><br>陽光 · 自然 · 無毒 · 自耕小農</div>
+    </div>
+    <div class="footer-contact">
+      <h4>聯絡我們</h4>
+      <p>官方 LINE：<a href="https://lin.ee/pZAcOkK">@905zltzj</a></p>
+      <p>Email：<a href="mailto:rocanllo2022@gmail.com">rocanllo2022@gmail.com</a></p>
+      <br>
+      <p style="font-size:0.8rem">歡迎喜愛小農耕作的民眾<br>以及餐廳業者洽詢訂購</p>
+    </div>
+  </div>
+  <div class="footer-bottom">© 南屏玉果農場 · 屏東縣 · 用心種植每一顆果實</div>
+</footer>
+
+<script async src="//www.instagram.com/embed.js"></script>
+
+<script>
+  // ── 知識 TAB ──
+  function switchTab(name) {
+    document.querySelectorAll('.k-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.k-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-' + name).classList.add('active');
+    document.querySelectorAll('.k-tab').forEach(t => {
+      if (t.getAttribute('onclick').includes(name)) t.classList.add('active');
+    });
+    document.getElementById('knowledge').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // ── 訂購 ──
+  const prices = { avo8:650, avo10:780, avo20:1450, mango:800, corn:0 };
+  const qtys   = { avo8:0, avo10:0, avo20:0, mango:0, corn:0 };
+
+  function changeQty(id, delta) {
+    qtys[id] = Math.max(0, qtys[id] + delta);
+    document.getElementById('qty-' + id).textContent = qtys[id];
+    const sub = qtys[id] * prices[id];
+    document.getElementById('sub-' + id).textContent =
+      id === 'corn' ? '預購' : (sub > 0 ? 'NT$' + sub.toLocaleString() : 'NT$0');
+    updateTotal();
+  }
+
+  function updateTotal() {
+    const total = Object.keys(qtys).reduce((s,k) => s + qtys[k] * prices[k], 0);
+    document.getElementById('totalAmount').textContent = 'NT$' + total.toLocaleString();
+  }
+
+  function submitOrder() {
+    const name     = document.getElementById('name').value.trim();
+    const phone    = document.getElementById('phone').value.trim();
+    const email    = document.getElementById('email').value.trim();
+    const address  = document.getElementById('address').value.trim();
+    const transfer = document.getElementById('transfer').value.trim();
+    const note     = document.getElementById('note').value.trim();
+
+    if (!Object.values(qtys).some(q => q > 0)) { alert('請至少選擇一項商品'); return; }
+    if (!name)     { alert('請填寫訂購者姓名'); return; }
+    if (!phone)    { alert('請填寫聯絡電話'); return; }
+    if (!email)    { alert('請填寫電子郵件'); return; }
+    if (!address)  { alert('請填寫收件地址'); return; }
+    if (!transfer) { alert('請填寫匯款末五碼'); return; }
+
+    const labels = { avo8:'酪梨8台斤', avo10:'酪梨10台斤', avo20:'酪梨20台斤', mango:'愛文芒果10台斤', corn:'白玉米20台斤(預購)' };
+    const items  = Object.keys(qtys).filter(k => qtys[k] > 0).map(k => `${labels[k]} x${qtys[k]}`);
+    const total  = Object.keys(qtys).reduce((s,k) => s + qtys[k] * prices[k], 0);
+
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzCiX_UX4gXWNkNS5DCLgvf_MvW-7K3JVzvTR1iVaYpAEL0K98jEOq57HMomqREay9PyA/exec';
+    const payload = {
+      timestamp: new Date().toLocaleString('zh-TW', { timeZone:'Asia/Taipei' }),
+      name, phone, email, address,
+      items: items.join('、'),
+      total: 'NT$' + total.toLocaleString(),
+      transfer, note, status:'待確認'
+    };
+
+    const form = document.createElement('form');
+    form.method = 'POST'; form.action = SCRIPT_URL; form.target = 'hidden_iframe'; form.style.display = 'none';
+    const input = document.createElement('input');
+    input.type = 'hidden'; input.name = 'data'; input.value = JSON.stringify(payload);
+    form.appendChild(input); document.body.appendChild(form);
+    let iframe = document.getElementById('hidden_iframe');
+    if (!iframe) { iframe = document.createElement('iframe'); iframe.name='hidden_iframe'; iframe.id='hidden_iframe'; iframe.style.display='none'; document.body.appendChild(iframe); }
+    form.submit(); document.body.removeChild(form);
+
+    document.getElementById('orderForm').style.display = 'none';
+    document.getElementById('successMsg').classList.add('show');
+    document.getElementById('successMsg').scrollIntoView({ behavior:'smooth' });
+  }
+</script>
+</body>
+</html>
