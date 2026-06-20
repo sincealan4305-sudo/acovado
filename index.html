@@ -801,6 +801,7 @@
     const sub = qtys[id] * prices[id];
     document.getElementById('sub-' + id).textContent =
       id === 'corn' ? '預購' : (sub > 0 ? 'NT$' + sub.toLocaleString() : 'NT$0');
+      id === 'passion' ? '已售完' : (sub > 0 ? 'NT$' + sub.toLocaleString() : 'NT$0');
     updateTotal();
   }
 
