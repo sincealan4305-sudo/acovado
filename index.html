@@ -161,7 +161,7 @@
   /* ORDER FORM */
   .order-section { padding:6rem 8vw; background:var(--cream-warm); }
   .order-subtitle { color:var(--text-light); font-size:0.9rem; margin-bottom:3rem; }
-  .order-form { max-width:760px; background:var(--white); border:1px solid var(--sage-pale); border-radius:4px; padding:2.5rem; }
+  .order-form { max-width:760px; background:var(--white); border:1px solid var(--sage-pale); border-radius:4px; padding:2.5rem; margin:0 auto; }
   .form-section-title { font-family:'Noto Serif TC',serif; font-size:1rem; color:var(--forest); margin-bottom:1.25rem; padding-bottom:0.6rem; border-bottom:1px solid var(--sage-pale); }
   .product-order-grid { display:grid; gap:1rem; margin-bottom:2rem; }
   .product-row { display:grid; grid-template-columns:1fr auto auto; align-items:center; gap:1rem; padding:0.75rem; background:var(--cream); border-radius:3px; }
@@ -345,30 +345,46 @@
   <h2 class="section-title">當季農作・友善種植</h2>
   <p class="farming-intro">我們的農作依照節氣與自然時序採收，出貨品種以當時節氣採收為主。以下是農場目前栽培的主要品項：</p>
 
-  <div class="farming-category-title">🥑 酪梨系列</div>
+  <div class="farming-category-title">🥑 酪梨品種介紹</div>
   <div class="farming-grid">
     <div class="farming-card">
-      <div class="farming-card-icon avo">🥑</div>
+      <div class="farming-card-icon avo" style="background:linear-gradient(135deg,#2A1A3A,#4A2A6A);">
+        <span style="font-size:2.5rem;">🟣</span>
+      </div>
       <div class="farming-card-body">
-        <div class="farming-card-name">哈斯系大顆酪梨</div>
-        <div class="farming-card-season">📅 主產季：夏秋</div>
-        <div class="farming-card-desc">果肉飽滿細緻，口感滑順濃郁，富含健康不飽和脂肪酸，是我們農場的主力品項。</div>
+        <div class="farming-card-name">嘉林一號</div>
+        <div class="farming-card-season">📅 產期：六月底～七月底</div>
+        <div class="farming-card-desc">成熟果皮呈<strong>暗紫或黑色</strong>。夏季最早登場，果肉細緻滑順，是愛酪梨朋友期待的夏日第一口。</div>
       </div>
     </div>
     <div class="farming-card">
-      <div class="farming-card-icon avo">🌿</div>
+      <div class="farming-card-icon avo" style="background:linear-gradient(135deg,#3A1010,#6A2020);">
+        <span style="font-size:2.5rem;">🔴</span>
+      </div>
       <div class="farming-card-body">
-        <div class="farming-card-name">友善耕作認證</div>
-        <div class="farming-card-season">✓ 無農藥・無化肥</div>
-        <div class="farming-card-desc">全程不使用化學農藥、除草劑與化肥，讓土地休養生息，回饋最天然的風味。</div>
+        <div class="farming-card-name">黑美人（清進一號）</div>
+        <div class="farming-card-season">📅 產期：七月初～八月中旬</div>
+        <div class="farming-card-desc">成熟果皮呈<strong>暗紅色</strong>，外型討喜。果肉飽滿香濃，是農場夏季主力品種，深受老顧客喜愛。</div>
       </div>
     </div>
     <div class="farming-card">
-      <div class="farming-card-icon avo">📦</div>
+      <div class="farming-card-icon avo" style="background:linear-gradient(135deg,#3A1020,#6A2040);">
+        <span style="font-size:2.5rem;">🍷</span>
+      </div>
       <div class="farming-card-body">
-        <div class="farming-card-name">產地直送・品鮮保證</div>
-        <div class="farming-card-season">🚚 含運費宅配到府</div>
-        <div class="farming-card-desc">採收後直接宅配，減少中間流通，讓你拿到最新鮮的果實，價格也更實惠。</div>
+        <div class="farming-card-name">紅心圓（清進二號）</div>
+        <div class="farming-card-season">📅 產期：八月中～九月中</div>
+        <div class="farming-card-desc">成熟果皮呈<strong>紫紅色</strong>，顏色鮮豔亮麗。果核小、果肉比例高，承接夏末初秋的最佳選擇。</div>
+      </div>
+    </div>
+    <div class="farming-card">
+      <div class="farming-card-icon avo" style="background:linear-gradient(135deg,#1A2A10,#2A4A1A);">
+        <span style="font-size:2.5rem;">🟢</span>
+      </div>
+      <div class="farming-card-body">
+        <div class="farming-card-name">秋可</div>
+        <div class="farming-card-season">📅 產期：十月中左右</div>
+        <div class="farming-card-desc">成熟果皮呈<strong>暗綠或淡綠色</strong>，秋季限定。熟成後仍保持翠綠色，需用手輕壓感受彈性來判斷熟度。</div>
       </div>
     </div>
   </div>
@@ -406,54 +422,6 @@
   </div>
 </section>
 
-<!-- PRODUCTS PRICING -->
-<section id="products" class="products">
-  <p class="section-eyebrow">選購農作</p>
-  <h2 class="section-title">新鮮直送・透明定價</h2>
-  <div class="products-grid">
-    <div class="product-card">
-      <div class="product-icon avo">🥑</div>
-      <div class="product-body">
-        <div class="product-name">無毒酪梨 8台斤</div>
-        <div class="product-desc">約 8～10 顆，適合一般家庭嚐鮮。</div>
-        <div class="product-prices">
-          <div class="price-row"><span class="price-label">含運費宅配</span><span class="price-val">NT$650</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="product-card">
-      <div class="product-icon avo">🥑</div>
-      <div class="product-body">
-        <div class="product-name">無毒酪梨 10台斤</div>
-        <div class="product-desc">約 10～12 顆，最受歡迎的選擇。</div>
-        <div class="product-prices">
-          <div class="price-row"><span class="price-label">含運費宅配</span><span class="price-val">NT$780</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="product-card">
-      <div class="product-icon avo">🥑</div>
-      <div class="product-body">
-        <div class="product-name">無毒酪梨 20台斤</div>
-        <div class="product-desc">約 20～24 顆，適合家庭囤貨或送禮。</div>
-        <div class="product-prices">
-          <div class="price-row"><span class="price-label">含運費宅配</span><span class="price-val">NT$1,450</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="product-card">
-      <div class="product-icon mango">🥭</div>
-      <div class="product-body">
-        <div class="product-name">無毒愛文芒果 10台斤</div>
-        <div class="product-desc">約 10～15 顆，產量有限，售完為止。</div>
-        <div class="product-prices">
-          <div class="price-row"><span class="price-label">含運費宅配</span><span class="price-val">NT$800</span></div>
-        </div>
-        <div class="product-note">⚠️ 產量有限，售完為止</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- KNOWLEDGE -->
 <section id="knowledge" class="knowledge-section">
@@ -587,11 +555,11 @@
     <!-- IG Embed 1 -->
     <div class="ig-embed-wrap">
       <blockquote class="instagram-media"
-        data-instgrm-permalink="https://www.instagram.com/reel/DLAX1RFJjDV/?utm_source=ig_embed"
+        data-instgrm-permalink="https://www.instagram.com/nanpinyugofarm/?utm_source=ig_embed"
         data-instgrm-version="14"
         style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:1px;max-width:100%;padding:0;width:100%;">
         <div style="padding:16px;">
-          <a href="https://www.instagram.com/reel/DLAX1RFJjDV/" target="_blank"
+          <a href="https://www.instagram.com/nanpinyugofarm/" target="_blank"
             style="background:#FFFFFF;line-height:0;padding:0;text-align:center;text-decoration:none;width:100%;">
             <div style="display:flex;flex-direction:row;align-items:center;">
               <div style="background-color:#F4F4F4;border-radius:50%;height:40px;width:40px;"></div>
@@ -626,7 +594,7 @@
         <div style="font-size:1.5rem;margin-bottom:0.75rem;">📱</div>
         <div style="font-family:'Noto Serif TC',serif;font-size:1rem;color:var(--forest);margin-bottom:0.5rem;font-weight:600;">更多影音食譜</div>
         <p style="font-size:0.85rem;color:var(--text-mid);line-height:1.8;">我們持續在 Instagram 分享酪梨料理靈感，從早餐到正餐，從甜點到飲品，讓你每天都有新玩法。</p>
-        <a href="https://www.instagram.com/" target="_blank" class="ig-cta" style="margin-top:1rem;display:inline-flex;">📷 追蹤我們的 IG</a>
+        <a href="https://www.instagram.com/nanpinyugofarm" target="_blank" class="ig-cta" style="margin-top:1rem;display:inline-flex;">📷 追蹤我們的 IG</a>
       </div>
     </div>
   </div>
