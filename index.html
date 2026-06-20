@@ -402,7 +402,7 @@
       </div>
       <div class="farming-card-body">
         <div class="farming-card-name">無毒愛文芒果</div>
-        <div class="farming-card-season">📅 產季：夏季</div>
+        <div class="farming-card-season">📅 本年度已售完</div>
         <div class="farming-card-desc">在欉紅採收，甜度高、香氣濃。因為沒有農藥，表皮可能有些自然痕跡，但口感純天然甜美。</div>
       </div>
     </div>
@@ -693,14 +693,23 @@
         </div>
         <div class="product-subtotal" id="sub-avo20">NT$0</div>
       </div>
-      <div class="product-row" data-price="800" data-id="mango">
-        <div><div class="product-row-name">🥭 無毒愛文芒果 10台斤（約10~15顆）</div><div class="product-row-price">NT$800 / 箱 · 含運 <span style="color:var(--soil);font-size:0.75rem">（產量有限）</span></div></div>
+      <div class="product-row" data-price="1450" data-id="avo20">
+        <div><div class="product-row-name">🥑 無毒酪梨 30台斤（約26~30顆）</div><div class="product-row-price">NT$2,100 / 箱 · 含運</div></div>
         <div class="qty-control">
-          <button class="qty-btn" onclick="changeQty('mango',-1)">−</button>
-          <div class="qty-display" id="qty-mango">0</div>
-          <button class="qty-btn" onclick="changeQty('mango',1)">+</button>
+          <button class="qty-btn" onclick="changeQty('avo30',-1)">−</button>
+          <div class="qty-display" id="qty-avo20">0</div>
+          <button class="qty-btn" onclick="changeQty('avo30',1)">+</button>
         </div>
-        <div class="product-subtotal" id="sub-mango">NT$0</div>
+        <div class="product-subtotal" id="sub-avo20">NT$0</div>
+      </div>
+      <div class="product-row" data-price="800" data-id="mango">
+        <div><div class="product-row-name">🥭 無毒愛文芒果 10台斤（約10~15顆）</div><div class="product-row-price" style="color:var(--text-light)">今年已售完，明年見~</div></div>
+          <div class="qty-control">
+          <button class="qty-btn" disabled>−</button>
+          <div class="qty-display">—</div>
+          <button class="qty-btn" disabled>+</button>
+        </div>
+        <div class="product-subtotal" id="sub-passion">已售完</div>
       </div>
       <div class="product-row" data-price="0" data-id="passion" style="opacity:0.6">
         <div><div class="product-row-name">🧉 無毒滿天星百香果 10台斤 </div><div class="product-row-price" style="color:var(--text-light)">今年已售完，明年見~</div></div>
@@ -791,8 +800,8 @@
   }
 
   // ── 訂購 ──
-  const prices = { avo8:650, avo10:780, avo20:1450, mango:800, passion:0, corn:0 };
-  const qtys   = { avo8:0, avo10:0, avo20:0, mango:0, passion:0, corn:0 };
+  const prices = { avo8:650, avo10:780, avo20:1450, avo30:2100, mango:0, passion:0, corn:0 };
+  const qtys   = { avo8:0, avo10:0, avo20:0, avo30:0, mango:0, passion:0, corn:0 };
 
   function changeQty(id, delta) {
     qtys[id] = Math.max(0, qtys[id] + delta);
@@ -801,6 +810,7 @@
     document.getElementById('sub-' + id).textContent =
       id === 'corn' ? '預購' : (sub > 0 ? 'NT$' + sub.toLocaleString() : 'NT$0');
       id === 'passion' ? '已售完' : (sub > 0 ? 'NT$' + sub.toLocaleString() : 'NT$0');
+      id === 'mango' ? '已售完' : (sub > 0 ? 'NT$' + sub.toLocaleString() : 'NT$0');
     updateTotal();
   }
 
