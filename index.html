@@ -386,7 +386,7 @@
       <div class="farming-card-body">
         <div class="farming-card-name">嘉選二號</div>
         <div class="farming-card-season">📅 產期：八月中~九月初</div>
-        <div class="farming-card-desc">成熟果皮呈<strong>暗紅色</strong>，夏日中生種。</div>
+        <div class="farming-card-desc">成熟果皮呈<strong>暗紅色</strong>，初秋中生種。</div>
       </div>
     </div>
     <div class="farming-card">
@@ -399,7 +399,7 @@
       <div class="farming-card-body">
         <div class="farming-card-name">秋可</div>
         <div class="farming-card-season">📅 產期：十二月初左右</div>
-        <div class="farming-card-desc">成熟果皮呈<strong>暗綠或淡綠色</strong>，秋季限定。熟成後仍保持翠綠色，需用手輕壓感受彈性來判斷熟度。</div>
+        <div class="farming-card-desc">成熟果皮呈<strong>暗綠或淡綠色</strong>，冬季限定。熟成後仍保持翠綠色，需用手輕壓感受彈性來判斷熟度。</div>
       </div>
     </div>     
   </div>
@@ -847,7 +847,7 @@
     if (!address)  { alert('請填寫收件地址'); return; }
     if (!transfer) { alert('請填寫匯款末五碼'); return; }
 
-    const labels = { avo8:'酪梨8台斤', avo10:'酪梨10台斤', avo20:'酪梨20台斤', mango:'愛文芒果10台斤', passion:'滿天星百香果10台斤', corn:'白玉米20台斤(預購)' };
+    const labels = { avo8:'酪梨8台斤', avo10:'酪梨10台斤', avo20:'酪梨20台斤', avo30:'酪梨30台斤', mango:'愛文芒果10台斤', passion:'滿天星百香果10台斤', corn:'白玉米20台斤(預購)' };
     const items  = Object.keys(qtys).filter(k => qtys[k] > 0).map(k => `${labels[k]} x${qtys[k]}`);
     const total  = Object.keys(qtys).reduce((s,k) => s + qtys[k] * prices[k], 0);
 
