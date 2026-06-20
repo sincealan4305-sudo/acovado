@@ -703,6 +703,15 @@
         </div>
         <div class="product-subtotal" id="sub-mango">NT$0</div>
       </div>
+      <div class="product-row" data-price="0" data-id="passion" style="opacity:0.6">
+        <div><div class="product-row-name">🌺 無毒滿天星百香果 10台斤 </div><div class="product-row-price" style="color:var(--text-light)">今年已售完，明年見~</div></div>
+        <div class="qty-control">
+          <button class="qty-btn" onclick="changeQty('passion',-1)">−</button>
+          <div class="qty-display" id="qty-passion">0</div>
+          <button class="qty-btn" onclick="changeQty('passion',1)">+</button>
+        </div>
+        <div class="product-subtotal" id="sub-passion">已售完</div>
+      </div>
       <div class="product-row" data-price="0" data-id="corn" style="opacity:0.6">
         <div><div class="product-row-name">🌽 無毒白玉米 20台斤（預購）</div><div class="product-row-price" style="color:var(--text-light)">預計 1~3月採收 · 歡迎預訂</div></div>
         <div class="qty-control">
@@ -783,8 +792,8 @@
   }
 
   // ── 訂購 ──
-  const prices = { avo8:650, avo10:780, avo20:1450, mango:800, corn:0 };
-  const qtys   = { avo8:0, avo10:0, avo20:0, mango:0, corn:0 };
+  const prices = { avo8:650, avo10:780, avo20:1450, mango:800, passion:0, corn:0 };
+  const qtys   = { avo8:0, avo10:0, avo20:0, mango:0, passion:0, corn:0 };
 
   function changeQty(id, delta) {
     qtys[id] = Math.max(0, qtys[id] + delta);
@@ -815,7 +824,7 @@
     if (!address)  { alert('請填寫收件地址'); return; }
     if (!transfer) { alert('請填寫匯款末五碼'); return; }
 
-    const labels = { avo8:'酪梨8台斤', avo10:'酪梨10台斤', avo20:'酪梨20台斤', mango:'愛文芒果10台斤', corn:'白玉米20台斤(預購)' };
+    const labels = { avo8:'酪梨8台斤', avo10:'酪梨10台斤', avo20:'酪梨20台斤', mango:'愛文芒果10台斤', passion:'滿天星百香果10台斤', corn:'白玉米20台斤(預購)' };
     const items  = Object.keys(qtys).filter(k => qtys[k] > 0).map(k => `${labels[k]} x${qtys[k]}`);
     const total  = Object.keys(qtys).reduce((s,k) => s + qtys[k] * prices[k], 0);
 
